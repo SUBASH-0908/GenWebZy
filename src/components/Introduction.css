@@ -1,0 +1,77 @@
+/* ─── INTRODUCTION ───────────────────────────────────────── */
+.intro {
+  border-top: 1px solid var(--gray-100);
+  border-bottom: 1px solid var(--gray-100);
+}
+
+.intro__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-16);
+  align-items: start;
+  padding: var(--space-20) 0;
+}
+
+.intro__heading {
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: var(--navy);
+  margin-bottom: var(--space-6);
+}
+
+.intro__body {
+  font-size: var(--text-lg);
+  color: var(--gray-600);
+  line-height: 1.75;
+}
+
+.intro__pillars {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  border-left: 1px solid var(--gray-100);
+  padding-left: var(--space-10);
+}
+
+.intro__pillar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.intro__pillar-label {
+  font-size: var(--text-sm);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--blue);
+}
+
+.intro__pillar-desc {
+  font-size: var(--text-base);
+  color: var(--gray-600);
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .intro__inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+    padding: var(--space-12) 0;
+  }
+  .intro__pillars {
+    border-left: none;
+    padding-left: 0;
+    border-top: 1px solid var(--gray-100);
+    padding-top: var(--space-8);
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--space-6);
+  }
+  .intro__pillar {
+    flex: 1;
+    min-width: 140px;
+  }
+}

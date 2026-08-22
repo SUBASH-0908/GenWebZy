@@ -1,0 +1,147 @@
+/* ─── FAQ ────────────────────────────────────────────────── */
+.faq {
+  background: var(--off-white);
+  border-top: 1px solid var(--gray-100);
+}
+
+.faq__inner {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: var(--space-20);
+  align-items: start;
+}
+
+.faq__left {
+  position: sticky;
+  top: var(--space-24);
+}
+
+.faq__contact-link {
+  color: var(--blue);
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.faq__contact-link:hover {
+  color: var(--blue-dark);
+}
+
+/* ─── LIST ───────────────────────────────────────────────── */
+.faq__list {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--gray-100);
+}
+
+/* ─── ITEM ───────────────────────────────────────────────── */
+.faq-item {
+  border-bottom: 1px solid var(--gray-100);
+  border-left: 3px solid transparent;
+  padding-left: var(--space-5);
+  transition:
+    border-color 0.3s ease,
+    background   0.3s ease;
+}
+
+.faq-item--open {
+  border-left-color: var(--blue);
+  background: rgba(37, 99, 235, 0.03);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+/* ─── QUESTION BUTTON ────────────────────────────────────── */
+.faq-item__question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: var(--space-5) 0;
+  gap: var(--space-4);
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--navy);
+  text-align: left;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font);
+  transition: color 0.25s ease;
+}
+
+.faq-item__question:hover {
+  color: var(--blue);
+}
+
+.faq-item--open .faq-item__question {
+  color: var(--blue);
+}
+
+/* ─── CHEVRON ────────────────────────────────────────────── */
+.faq-item__icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  color: var(--gray-400);
+  transition: color 0.25s ease;
+}
+
+.faq-item--open .faq-item__icon {
+  color: var(--blue);
+}
+
+.faq-item__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Chevron rotation via CSS — no inline style fighting transitions */
+.faq-chevron {
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.faq-item--open .faq-chevron {
+  transform: rotate(180deg);
+}
+
+/* ─── ANSWER — EXACT HEIGHT ANIMATION ───────────────────── */
+/*
+ * Height is set via inline style (scrollHeight) from JS.
+ * We only need overflow:hidden + transition here.
+ * No max-height guessing, no translateY — pure smooth.
+ */
+.faq-item__answer {
+  overflow: hidden;
+  /* Start at 0 — JS sets the target height */
+  transition: height 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.faq-item__answer-text {
+  padding-top: var(--space-1);
+  padding-bottom: var(--space-5);
+  font-size: var(--text-base);
+  color: var(--gray-600);
+  line-height: 1.75;
+  /* Soft fade-in so text doesn't just cut in */
+  opacity: 0;
+  transition: opacity 0.25s ease 0.12s;
+}
+
+.faq-item--open .faq-item__answer-text {
+  opacity: 1;
+}
+
+/* ─── RESPONSIVE ─────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .faq__inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  .faq__left {
+    position: static;
+  }
+
+  .faq-item {
+    padding-left: var(--space-3);
+  }
+}
