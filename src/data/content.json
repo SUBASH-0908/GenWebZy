@@ -184,7 +184,7 @@
       "id": 1,
       "question": "How long does a website take?",
       "answer": "Timeline depends on the number of pages, features and revision requirements. We discuss and agree on a timeline before development begins.",
-      "visible": false
+      "visible": true
     },
     {
       "id": 2,
