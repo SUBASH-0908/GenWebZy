@@ -35,12 +35,12 @@ export default function Admin() {
   const [loading, setLoading] = useState(false);
   const [toast, setToast] = useState('');
 
-  // GitHub Auto-Sync State
+  // GitHub Auto-Sync State (supports VITE_GITHUB_TOKEN env var for all team members!)
   const [githubToken, setGithubToken] = useState(() => {
-    return localStorage.getItem('genwebzy_github_token') || '';
+    return import.meta.env.VITE_GITHUB_TOKEN || localStorage.getItem('genwebzy_github_token') || '';
   });
   const [githubRepo, setGithubRepo] = useState(() => {
-    return localStorage.getItem('genwebzy_github_repo') || 'SUBASH-0908/GenWebZy';
+    return import.meta.env.VITE_GITHUB_REPO || localStorage.getItem('genwebzy_github_repo') || 'SUBASH-0908/GenWebZy';
   });
   const [syncingGithub, setSyncingGithub] = useState(false);
 
@@ -126,17 +126,18 @@ export default function Admin() {
       });
     } catch (err) {}
 
-    // 2. If GitHub token configured, auto-commit to GitHub repository
-    if (githubToken) {
-      await pushToGithubRepo(updated);
+    // 2. If GitHub token configured (env var or local), auto-commit to GitHub repository
+    const activeToken = import.meta.env.VITE_GITHUB_TOKEN || githubToken;
+    if (activeToken) {
+      await pushToGithubRepo(updated, activeToken);
     } else {
-      showToast('Saved locally. (Add GitHub Token to auto-deploy on Vercel)');
+      showToast('Saved locally. (Add VITE_GITHUB_TOKEN in Vercel for team sync)');
     }
   };
 
-  const pushToGithubRepo = async (contentObj) => {
-    const token = githubToken.trim();
-    const repo = githubRepo.trim() || 'SUBASH-0908/GenWebZy';
+  const pushToGithubRepo = async (contentObj, customToken) => {
+    const token = (customToken || githubToken || import.meta.env.VITE_GITHUB_TOKEN || '').trim();
+    const repo = (githubRepo || import.meta.env.VITE_GITHUB_REPO || 'SUBASH-0908/GenWebZy').trim();
     if (!token) return;
 
     setSyncingGithub(true);
@@ -194,22 +195,10 @@ export default function Admin() {
   const saveGithubSettings = () => {
     localStorage.setItem('genwebzy_github_token', githubToken.trim());
     localStorage.setItem('genwebzy_github_repo', githubRepo.trim());
-    showToast('GitHub token saved successfully!');
+    showToast('GitHub token saved for this device!');
     if (githubToken.trim()) {
-      pushToGithubRepo(data);
+      pushToGithubRepo(data, githubToken.trim());
     }
-  };
-
-  const exportContentJson = () => {
-    const jsonStr = JSON.stringify(data, null, 2);
-    const blob = new Blob([jsonStr], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'content.json';
-    a.click();
-    URL.revokeObjectURL(url);
-    showToast('Downloaded content.json!');
   };
 
   const handleLogin = async (e) => {
@@ -413,6 +402,8 @@ export default function Admin() {
     );
   }
 
+  const effectiveToken = import.meta.env.VITE_GITHUB_TOKEN || githubToken;
+
   return (
     <div className="adm-shell">
       {/* Sidebar */}
@@ -458,7 +449,7 @@ export default function Admin() {
           {syncingGithub ? (
             <span className="adm-hint">⏳ Syncing to GitHub...</span>
           ) : (
-            <span className="adm-header__saved">● {githubToken ? 'GitHub Auto-Sync Active' : 'Sync Active'}</span>
+            <span className="adm-header__saved">● {effectiveToken ? 'Team GitHub Auto-Sync Active' : 'Sync Active'}</span>
           )}
         </header>
 
@@ -485,9 +476,9 @@ export default function Admin() {
               <div className="adm-card" style={{ flexDirection: 'column', gap: '12px' }}>
                 <h3 className="adm-card__title">Live Vercel Deployment Sync</h3>
                 <p className="adm-card__sub">
-                  {githubToken
-                    ? "⚡ GitHub Auto-Sync is ACTIVE! Any change you save instantly pushes a commit to your GitHub repository and triggers a live Vercel build."
-                    : "⚠️ GitHub Token not configured. Enter your GitHub Access Token in GitHub Auto-Sync settings so changes commit directly to GitHub for automatic Vercel updates."}
+                  {effectiveToken
+                    ? "⚡ Team GitHub Auto-Sync is ACTIVE for all team members! Any change saved by anyone logged into this admin panel automatically commits to GitHub and updates Vercel."
+                    : "⚠️ GitHub Token not configured globally. Add VITE_GITHUB_TOKEN in Vercel Environment Variables so all team members can save without entering a token."}
                 </p>
                 <div style={{ display: 'flex', gap: '10px', marginTop: '8px', flexWrap: 'wrap' }}>
                   <button className="adm-btn adm-btn--primary" onClick={() => openAddModal('projects')}>
@@ -513,7 +504,7 @@ export default function Admin() {
 
               <div className="adm-card" style={{ flexDirection: 'column', gap: '16px' }}>
                 <p className="adm-card__sub">
-                  Provide a Personal Access Token from GitHub. Once saved, every time you edit, add, or hide items in this Admin Panel, it will automatically push a commit to your GitHub repository, triggering Vercel to update your live website instantly.
+                  Add your GitHub token below for this browser, OR add <code>VITE_GITHUB_TOKEN</code> in Vercel Environment Variables so <strong>all team members automatically get access without entering tokens</strong>.
                 </p>
 
                 <div className="adm-field">
@@ -535,17 +526,14 @@ export default function Admin() {
                     onChange={(e) => setGithubToken(e.target.value)}
                     placeholder="ghp_xxxxxxxxxxxxxxxxxxxx"
                   />
-                  <div className="adm-hint" style={{ marginTop: '4px' }}>
-                    Need a token? Create one at: <strong>github.com → Settings → Developer Settings → Personal Access Tokens → Tokens (classic)</strong> (select repo scope: <code>repo</code> / <code>contents: write</code>).
-                  </div>
                 </div>
 
                 <div style={{ display: 'flex', gap: '10px' }}>
                   <button className="adm-btn adm-btn--primary" onClick={saveGithubSettings}>
-                    💾 Save Token & Sync to GitHub Now
+                    💾 Save Token for This Device
                   </button>
-                  {githubToken && (
-                    <button className="adm-btn adm-btn--ghost" onClick={() => pushToGithubRepo(data)}>
+                  {effectiveToken && (
+                    <button className="adm-btn adm-btn--ghost" onClick={() => pushToGithubRepo(data, effectiveToken)}>
                       🚀 Test Push Now
                     </button>
                   )}
