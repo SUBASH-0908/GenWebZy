@@ -1,29 +1,36 @@
 import { useEffect } from 'react';
 
 /**
- * useScrollReveal
- * Attaches an IntersectionObserver to all elements with the `.reveal` class
- * and adds `.visible` when they enter the viewport.
+ * Adds `.visible` to every `.reveal` element when it enters the viewport.
+ * Uses IntersectionObserver — no layout thrashing.
  */
 export function useScrollReveal() {
   useEffect(() => {
-    const elements = document.querySelectorAll('.reveal');
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    const observer = new IntersectionObserver(
+    const els = document.querySelectorAll('.reveal');
+
+    if (reduced) {
+      els.forEach(el => el.classList.add('visible'));
+      return;
+    }
+
+    const obs = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
+        entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add('visible');
-            // Once revealed, stop observing to save resources
-            observer.unobserve(entry.target);
+            obs.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+      {
+        threshold:  0.05,            // Trigger much earlier (was 0.1)
+        rootMargin: '0px 0px -20px 0px',  // Less bottom offset = triggers sooner (was -40px)
+      }
     );
 
-    elements.forEach((el) => observer.observe(el));
-
-    return () => observer.disconnect();
+    els.forEach(el => obs.observe(el));
+    return () => obs.disconnect();
   }, []);
 }

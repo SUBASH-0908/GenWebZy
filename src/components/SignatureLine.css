@@ -1,0 +1,31 @@
+/* ─── SIGNATURE LINE ─────────────────────────────────────── */
+/* 
+ * A 2px vertical blue line on the far left of the viewport.
+ * It fills downward as the user scrolls — like the spine of a book.
+ * Only visible on desktop (≥1280px), where it won't interfere with content.
+ */
+.sig-track {
+  position: fixed;
+  left: 20px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--g100);
+  z-index: 50;
+  pointer-events: none;
+}
+
+.sig-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0%;
+  background: var(--blue);
+  transition: height 0.1s linear;
+  border-radius: 0 0 2px 2px;
+}
+
+@media (max-width: 1279px) {
+  .sig-track { display: none; }
+}

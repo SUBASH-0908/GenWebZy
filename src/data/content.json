@@ -1,0 +1,252 @@
+{
+  "contact": {
+    "email": "contact.genwebzy@gmail.com",
+    "whatsapp": "919751574014",
+    "whatsappLink": "https://wa.me/919751574014",
+    "whatsapp2": "+91 7904434191",
+    "instagram": "INSTAGRAM_URL",
+    "linkedin": "LINKEDIN_URL",
+    "github": "GITHUB_URL"
+  },
+  "services": [
+    {
+      "id": "01",
+      "title": "Business Websites",
+      "description": "Professional websites for small businesses and growing companies.",
+      "extras": [
+        "Domain & Hosting Setup",
+        "Contact Forms",
+        "Google Maps Integration",
+        "Basic SEO"
+      ]
+    },
+    {
+      "id": "02",
+      "title": "Portfolio Websites",
+      "description": "Personal and professional portfolio websites for individuals, developers, designers, photographers and creators.",
+      "extras": [
+        "Custom Design",
+        "Responsive Layout",
+        "Project Showcase"
+      ]
+    },
+    {
+      "id": "03",
+      "title": "Landing Pages",
+      "description": "Focused landing pages for products, services, campaigns and promotions.",
+      "extras": [
+        "Conversion-focused Design",
+        "WhatsApp Integration",
+        "Fast Loading"
+      ]
+    },
+    {
+      "id": "04",
+      "title": "E-Commerce Websites",
+      "description": "Online stores with product listings, shopping functionality and required integrations.",
+      "extras": [
+        "Payment Integration",
+        "Product Management",
+        "Database Integration"
+      ]
+    },
+    {
+      "id": "05",
+      "title": "Custom Web Development",
+      "description": "Websites and web applications built according to specific business requirements.",
+      "extras": [
+        "Custom Features",
+        "API Integrations",
+        "Backend Development"
+      ]
+    },
+    {
+      "id": "06",
+      "title": "Website Maintenance",
+      "description": "Updates, improvements, bug fixes and ongoing website support.",
+      "extras": [
+        "Regular Updates",
+        "Bug Fixes",
+        "Performance Monitoring"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "id": 1,
+      "title": "Photography Studio",
+      "category": "Business Website",
+      "description": "A clean and visual-first website for a local photography studio, designed to showcase portfolios and drive booking enquiries.",
+      "technologies": [
+        "HTML",
+        "CSS",
+        "JavaScript"
+      ],
+      "image": null,
+      "projectUrl": null,
+      "isConcept": true,
+      "visible": true
+    },
+    {
+      "id": 2,
+      "title": "Restaurant Website",
+      "category": "Business Website",
+      "description": "A warm, inviting website for a restaurant featuring the menu, opening hours, location and an online reservation form.",
+      "technologies": [
+        "React",
+        "CSS"
+      ],
+      "image": null,
+      "projectUrl": null,
+      "isConcept": true
+    },
+    {
+      "id": 3,
+      "title": "Personal Portfolio",
+      "category": "Portfolio",
+      "description": "A minimal personal portfolio for a frontend developer showcasing projects, skills and a contact form.",
+      "technologies": [
+        "React",
+        "CSS"
+      ],
+      "image": null,
+      "projectUrl": null,
+      "isConcept": true
+    },
+    {
+      "id": 4,
+      "title": "Local Business Website",
+      "category": "Business Website",
+      "description": "A professional five-page website for a local service business with service listings, about page and an enquiry form.",
+      "technologies": [
+        "HTML",
+        "CSS",
+        "JavaScript"
+      ],
+      "image": null,
+      "projectUrl": null,
+      "isConcept": true
+    }
+  ],
+  "pricing": [
+    {
+      "id": 1,
+      "name": "Starter Website",
+      "audience": "For individuals and small businesses.",
+      "price": "₹X,XXX",
+      "priceNote": "Starting from",
+      "features": [
+        "Up to 5 pages",
+        "Responsive design",
+        "Contact form",
+        "Basic SEO setup",
+        "Domain & hosting guidance"
+      ],
+      "cta": "Get a Quote",
+      "highlighted": false
+    },
+    {
+      "id": 2,
+      "name": "Business Website",
+      "audience": "For businesses requiring a complete online presence.",
+      "price": "₹X,XXX",
+      "priceNote": "Starting from",
+      "features": [
+        "Up to 10 pages",
+        "Custom design",
+        "Contact & enquiry forms",
+        "Google Maps integration",
+        "WhatsApp integration",
+        "Basic SEO setup"
+      ],
+      "cta": "Get a Quote",
+      "highlighted": true
+    },
+    {
+      "id": 3,
+      "name": "Custom Website",
+      "audience": "For e-commerce, dashboards and custom requirements.",
+      "price": "Let's Discuss",
+      "priceNote": "",
+      "features": [
+        "Custom pages & features",
+        "E-commerce functionality",
+        "Payment integration",
+        "Database integration",
+        "Ongoing support available"
+      ],
+      "cta": "Start a Conversation",
+      "highlighted": false
+    }
+  ],
+  "faq": [
+    {
+      "id": 1,
+      "question": "How long does a website take?",
+      "answer": "Timeline depends on the number of pages, features and revision requirements. We discuss and agree on a timeline before development begins.",
+      "visible": true
+    },
+    {
+      "id": 2,
+      "question": "Do you provide domain and hosting?",
+      "answer": "Yes. If required, GenWebZy can help with domain and hosting setup as part of the project."
+    },
+    {
+      "id": 3,
+      "question": "Can you redesign an existing website?",
+      "answer": "Yes. Existing websites can be redesigned and modernized based on the requirement."
+    },
+    {
+      "id": 4,
+      "question": "Will my website work on mobile?",
+      "answer": "Yes. Websites are designed responsively to work on mobile, tablet and desktop devices."
+    },
+    {
+      "id": 5,
+      "question": "Can I request changes?",
+      "answer": "Yes. Revision limits and requirements are discussed before the project begins."
+    },
+    {
+      "id": 6,
+      "question": "Do you provide support after launch?",
+      "answer": "Yes. Maintenance and support can be discussed depending on the project."
+    },
+    {
+      "id": 7,
+      "question": "How does payment work?",
+      "answer": "Payment terms are clearly mentioned in the project quotation before development begins."
+    }
+  ],
+  "reviews": [
+    {
+      "id": 1,
+      "name": "Arjun Sharma",
+      "company": "FreshMart Superstore",
+      "service": "Business Website",
+      "rating": 5,
+      "text": "Genwebzy delivered a polished, fast business website in under 2 weeks. The design is clean and our customers love how easy it is to navigate. Highly recommended for any local business.",
+      "avatar": "AS",
+      "visible": true
+    },
+    {
+      "id": 2,
+      "name": "Priya Nair",
+      "company": "Studio Priya",
+      "service": "Portfolio Website",
+      "rating": 5,
+      "text": "I needed a portfolio that reflected my design work and Genwebzy nailed it. The attention to detail was impressive — every section was exactly how I envisioned it.",
+      "avatar": "PN",
+      "visible": true
+    },
+    {
+      "id": 3,
+      "name": "Mohammed Farhan",
+      "company": "Farhan Exports",
+      "service": "Landing Page",
+      "rating": 5,
+      "text": "We got a conversion-focused landing page for our product launch. The WhatsApp integration alone brought in 30+ enquiries in the first week. Excellent work and great communication throughout.",
+      "avatar": "MF",
+      "visible": true
+    }
+  ]
+}

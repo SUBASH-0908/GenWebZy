@@ -1,98 +1,58 @@
-import { FAQ } from '../data/siteData';
-import { useState, useRef, useEffect } from 'react';
+import { useRef, useState } from 'react';
+import { FAQ as FAQ_DATA } from '../data/siteData';
 import './FAQ.css';
 
-/* ─── Chevron moved to CSS, no inline style needed ─── */
-const ChevronIcon = () => (
-  <svg
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    aria-hidden="true"
-    className="faq-chevron"
-  >
-    <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
-
-/* ─── Individual animated item ─── */
-function FAQItem({ item, index, isOpen, onToggle }) {
+function FAQItem({ item }) {
+  const [open, setOpen] = useState(false);
   const bodyRef = useRef(null);
-  const [height, setHeight] = useState(0);
-
-  useEffect(() => {
-    if (!bodyRef.current) return;
-    // Measure the exact content height and animate to it
-    setHeight(isOpen ? bodyRef.current.scrollHeight : 0);
-  }, [isOpen]);
 
   return (
-    <div className={`faq-item${isOpen ? ' faq-item--open' : ''}`}>
+    <div className={`faq-item${open ? ' faq-item--open' : ''}`}>
       <button
-        className="faq-item__question"
-        onClick={onToggle}
-        aria-expanded={isOpen}
-        id={`faq-btn-${index}`}
-        aria-controls={`faq-answer-${index}`}
+        className="faq-item__q"
+        onClick={() => setOpen(v => !v)}
+        aria-expanded={open}
+        id={`faq-${item.question.replace(/\s+/g, '-')}`}
       >
-        <span>{item.question}</span>
-        <span className="faq-item__icon">
-          <ChevronIcon />
+        {item.question}
+        <span className="faq-item__icon" aria-hidden="true">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
         </span>
       </button>
-
-      {/* Height is driven by exact scrollHeight — perfectly smooth */}
       <div
-        ref={bodyRef}
-        className="faq-item__answer"
-        style={{ height: `${height}px` }}
-        id={`faq-answer-${index}`}
-        role="region"
-        aria-labelledby={`faq-btn-${index}`}
+        className="faq-item__body"
+        style={{
+          display: 'grid',
+          gridTemplateRows: open ? '1fr' : '0fr',
+          transition: 'grid-template-rows 0.3s cubic-bezier(0.4,0,0.2,1)',
+        }}
       >
-        <p className="faq-item__answer-text">{item.answer}</p>
+        <div className="faq-item__body-inner">
+          <p className="faq-item__a">{item.answer}</p>
+        </div>
       </div>
     </div>
   );
 }
 
-/* ─── Section ─── */
-export default function FAQSection() {
-  const [openIdx, setOpenIdx] = useState(null);
-
-  const toggle = (i) => setOpenIdx((prev) => (prev === i ? null : i));
-
+export default function FAQ() {
   return (
-    <section id="faq" className="section faq" aria-labelledby="faq-heading">
+    <section id="faq" className="section section--alt faq" aria-labelledby="faq-h">
       <div className="container">
         <div className="faq__inner">
           <div className="faq__left reveal">
-            <span className="label">FAQ</span>
-            <h2
-              id="faq-heading"
-              className="section-heading"
-              style={{ marginTop: '1rem' }}
-            >
-              Frequently asked questions.
-            </h2>
-            <p className="section-subtitle" style={{ marginTop: '1rem' }}>
-              Can't find what you're looking for?{' '}
-              <a href="#contact" className="faq__contact-link">
-                Send us a message.
-              </a>
+            <span className="section-label">FAQ</span>
+            <h2 id="faq-h" className="faq__heading">Common questions.</h2>
+            <p className="faq__sub">
+              Have something specific in mind?{' '}
+              <a href="#contact" className="faq__link">Contact us directly.</a>
             </p>
           </div>
-
-          <div className="faq__list">
-            {FAQ.map((item, i) => (
-              <FAQItem
-                key={i}
-                item={item}
-                index={i}
-                isOpen={openIdx === i}
-                onToggle={() => toggle(i)}
-              />
+          <div className="faq__list reveal reveal-d2">
+            {FAQ_DATA.map(item => (
+              <FAQItem key={item.question} item={item} />
             ))}
           </div>
         </div>

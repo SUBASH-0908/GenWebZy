@@ -18,7 +18,7 @@ const CheckIcon = () => (
  * Props:
  *   id, placeholder, options (string[]), value, onChange(value)
  */
-export default function CustomSelect({ id, placeholder = 'Select…', options = [], value, onChange }) {
+export default function CustomSelect({ id, placeholder = 'Select…', options = [], value, onChange, dark = false }) {
   const [open, setOpen] = useState(false);
   const wrapRef = useRef(null);
 
@@ -49,7 +49,7 @@ export default function CustomSelect({ id, placeholder = 'Select…', options = 
 
   return (
     <div
-      className={`cs-wrap${open ? ' cs-wrap--open' : ''}`}
+      className={`cs-wrap${open ? ' cs-wrap--open' : ''}${dark ? ' cs-wrap--dark' : ''}`}
       ref={wrapRef}
     >
       {/* Trigger button */}

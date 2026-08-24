@@ -1,93 +1,115 @@
+import { useState } from 'react';
 import { DEMOS } from '../data/siteData';
 import './DemoWebsites.css';
 
-const ExternalIcon = () => (
-  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-    <path d="M5.5 2H2a1 1 0 00-1 1v9a1 1 0 001 1h9a1 1 0 001-1V8.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/>
-    <path d="M8 1h5v5M13 1L7 7" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
-  </svg>
-);
+const FILTERS = ['All', 'Restaurant', 'Photography', 'Salon', 'Gym', 'Real Estate', 'Portfolio'];
 
-function DemoPlaceholder({ name, category }) {
-  const hues = {
-    Restaurant: '#fff7ed',
-    Photography: '#f8f5ff',
-    Salon: '#fff0f6',
-    Gym: '#f0fff4',
-    'Real Estate': '#eff6ff',
-    Portfolio: '#f8fafc',
-    Education: '#fefce8',
-    'Small Business': '#f0fdf4',
-    'E-Commerce': '#fdf4ff',
-  };
-  const bg = hues[category] || '#f8fafc';
+/* Color scheme per category for placeholder backgrounds */
+const PALETTES = {
+  Restaurant:   { bg: '#1a0f0a', accent: '#c97c3a', text: '#f5ede4', label: 'Warm & Inviting'  },
+  Photography:  { bg: '#0c0c0c', accent: '#ffffff', text: '#ffffff', label: 'Minimal & Visual'  },
+  Salon:        { bg: '#2a1020', accent: '#c084a8', text: '#fdf0f8', label: 'Elegant & Refined' },
+  Gym:          { bg: '#0a1218', accent: '#22c55e', text: '#ffffff', label: 'Bold & Energetic'  },
+  'Real Estate':{ bg: '#0e1825', accent: '#60a5fa', text: '#f0f6ff', label: 'Clean & Professional'},
+  Portfolio:    { bg: '#f7f8fb', accent: '#2563eb', text: '#0c1120', label: 'Minimal & Personal' },
+};
+
+function DemoPlaceholder({ category, name }) {
+  const p = PALETTES[category] || PALETTES.Portfolio;
+  const light = category === 'Portfolio';
   return (
-    <div className="demo-card__placeholder" style={{ background: bg }}>
-      <span className="demo-card__placeholder-category">{category}</span>
-      <span className="demo-card__placeholder-name">{name}</span>
+    <div className="demo-ph" style={{ background: p.bg }}>
+      <div className="demo-ph__nav" style={{ borderColor: light ? '#eee' : 'rgba(255,255,255,0.08)' }}>
+        <span className="demo-ph__logo" style={{ color: p.text, opacity: light ? 1 : 0.85 }}>
+          {name.toUpperCase()}
+        </span>
+        <div className="demo-ph__nav-links" style={{ color: p.text, opacity: 0.4 }}>
+          <span>Menu</span><span>Gallery</span><span>Contact</span>
+        </div>
+      </div>
+      <div className="demo-ph__body">
+        <span className="demo-ph__cat" style={{ color: p.accent }}>{p.label}</span>
+        <div className="demo-ph__blocks">
+          <div className="demo-ph__h" style={{ background: p.accent, opacity: 0.8 }} />
+          <div className="demo-ph__h demo-ph__h--sm" style={{ background: p.text, opacity: 0.3 }} />
+          <div className="demo-ph__p" style={{ background: p.text, opacity: 0.15 }} />
+          <div className="demo-ph__p demo-ph__p--sm" style={{ background: p.text, opacity: 0.1 }} />
+          <div className="demo-ph__btn" style={{ background: p.accent }} />
+        </div>
+      </div>
     </div>
   );
 }
 
 export default function DemoWebsites() {
+  const [filter, setFilter] = useState('All');
+
+  const visible = filter === 'All'
+    ? DEMOS
+    : DEMOS.filter(d => d.category === filter);
+
+  const hasUrl = (url) => url && !url.startsWith('DEMO_URL');
+
   return (
-    <section id="demos" className="section demos" aria-labelledby="demos-heading">
+    <section id="demos" className="section section--alt demos" aria-labelledby="demos-h">
       <div className="container">
-        <div className="section-intro reveal">
-          <span className="label">Demo Websites</span>
-          <h2 id="demos-heading" className="section-heading" style={{ marginTop: '1rem' }}>
-            Explore our website demos.
-          </h2>
-          <p className="section-subtitle" style={{ marginTop: '1rem' }}>
-            Looking for inspiration? Browse some of our ready-to-show website concepts.
-            We can customize the design, content and functionality according to your business.
-          </p>
+        <div className="demos__head reveal">
+          <div>
+            <span className="section-label">Demo Websites</span>
+            <h2 id="demos-h" className="demos__heading">See what we can build.</h2>
+            <p className="demos__sub">
+              Explore our website concepts and find a direction for your project.
+              Each demo can be fully customised to your brand.
+            </p>
+          </div>
+          <a href="#contact" className="btn btn--outline demos__head-cta">
+            Request a Custom Design
+          </a>
         </div>
 
-        <div className="demos__grid">
-          {DEMOS.map((demo, i) => (
-            <article key={demo.id} className="demo-card reveal" style={{ '--delay': i * 0.07 + 's' }}>
-              <div className="demo-card__image-wrap">
-                {demo.image ? (
-                  <img
-                    src={demo.image}
-                    alt={`${demo.name} website preview`}
-                    className="demo-card__image"
-                    loading="lazy"
-                  />
-                ) : (
-                  <DemoPlaceholder name={demo.name} category={demo.category} />
-                )}
-                <span className="demo-card__tag">{demo.category}</span>
-              </div>
+        {/* Filter */}
+        <div className="demos__filters reveal" role="tablist" aria-label="Filter demos">
+          {FILTERS.map(f => (
+            <button
+              key={f}
+              className={`demos__filter${filter === f ? ' demos__filter--active' : ''}`}
+              onClick={() => setFilter(f)}
+              role="tab"
+              aria-selected={filter === f}
+            >
+              {f}
+            </button>
+          ))}
+        </div>
 
+        {/* Grid */}
+        <div className="demos__grid reveal reveal-d1">
+          {visible.map(demo => (
+            <article key={demo.id} className="demo-card">
+              <div className="demo-card__img-wrap">
+                {demo.image
+                  ? <img src={demo.image} alt={`${demo.name} preview`} className="demo-card__img" loading="lazy" />
+                  : <DemoPlaceholder category={demo.category} name={demo.name} />
+                }
+                <div className="demo-card__overlay">
+                  {hasUrl(demo.liveUrl)
+                    ? <a href={demo.liveUrl} target="_blank" rel="noopener noreferrer" className="demo-card__overlay-btn">
+                        View Demo →
+                      </a>
+                    : <span className="demo-card__overlay-soon">Coming Soon</span>
+                  }
+                </div>
+              </div>
               <div className="demo-card__body">
+                <span className="demo-card__cat">{demo.category}</span>
                 <h3 className="demo-card__name">{demo.name}</h3>
                 <p className="demo-card__desc">{demo.description}</p>
-
                 <div className="demo-card__tech">
-                  {demo.technologies.map(t => (
-                    <span key={t} className="demo-card__tech-item">{t}</span>
-                  ))}
+                  {demo.technologies.map(t => <span key={t} className="demo-card__tech-item">{t}</span>)}
                 </div>
-
-                <div className="demo-card__actions">
-                  {demo.liveUrl && !demo.liveUrl.startsWith('DEMO_URL') ? (
-                    <a
-                      href={demo.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn btn--outline btn--sm demo-card__btn"
-                    >
-                      Live Demo <ExternalIcon />
-                    </a>
-                  ) : (
-                    <span className="demo-card__coming">Demo coming soon</span>
-                  )}
-                  <a href="#contact" className="btn btn--primary btn--sm demo-card__btn">
-                    Request This Design
-                  </a>
-                </div>
+                <a href="#contact" className="demo-card__req">
+                  Build something like this →
+                </a>
               </div>
             </article>
           ))}

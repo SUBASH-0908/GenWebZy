@@ -1,33 +1,66 @@
+import { useEffect, useRef } from 'react';
 import './Introduction.css';
 
+/**
+ * The first editorial statement after the hero.
+ * As the heading scrolls into view, words transition from
+ * light gray to dark navy — subtle, memorable.
+ */
 export default function Introduction() {
+  const headRef = useRef(null);
+
+  useEffect(() => {
+    const el = headRef.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => el.classList.toggle('intro-head--lit', entry.isIntersecting),
+      { threshold: 0.5 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
   return (
-    <section className="intro section--alt" aria-label="Introduction">
+    <section className="section intro" aria-label="What we do">
       <div className="container">
         <div className="intro__inner">
-          <div className="intro__text reveal">
-            <h2 className="intro__heading">
-              Built for businesses that want a better presence online.
-            </h2>
-            <p className="intro__body">
-              We work with businesses, professionals and individuals to design and develop
-              websites that are clear, responsive and easy to use. From simple business
-              websites to custom web solutions, we focus on understanding the requirement
-              first and building around it.
-            </p>
-          </div>
-          <div className="intro__pillars reveal reveal-delay-2">
-            {[
-              { label: 'Design', desc: 'Thoughtful, clean visual direction tailored to your brand.' },
-              { label: 'Develop', desc: 'Responsive, well-structured code built to last.' },
-              { label: 'Deploy', desc: 'Launch-ready with domain, hosting and everything in place.' },
-            ].map(p => (
-              <div key={p.label} className="intro__pillar">
-                <span className="intro__pillar-label">{p.label}</span>
-                <p className="intro__pillar-desc">{p.desc}</p>
-              </div>
-            ))}
-          </div>
+          <span className="section-label">What We Do</span>
+
+          <h2 className="intro__head" ref={headRef}>
+            A website should do<br />more than look good.
+          </h2>
+
+          <p className="intro__body reveal reveal-d2">
+            It should explain what you offer, build trust and make it easy
+            for people to contact you. That is what we focus on.
+          </p>
+        </div>
+
+        {/* Three pillars */}
+        <div className="intro__pillars">
+          {[
+            {
+              n: '01',
+              title: 'Design',
+              desc: 'Layouts and visuals built specifically for your business — not adapted from a template.',
+            },
+            {
+              n: '02',
+              title: 'Develop',
+              desc: 'Clean, responsive code that works correctly across every device and browser.',
+            },
+            {
+              n: '03',
+              title: 'Deploy',
+              desc: 'Domain, hosting and everything set up — your website live and ready from day one.',
+            },
+          ].map((p, i) => (
+            <div key={p.n} className={`intro__pillar reveal reveal-d${i + 1}`}>
+              <span className="intro__pillar-n">{p.n}</span>
+              <h3 className="intro__pillar-title">{p.title}</h3>
+              <p className="intro__pillar-desc">{p.desc}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>

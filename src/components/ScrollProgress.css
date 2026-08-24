@@ -1,0 +1,15 @@
+/* ─── SCROLL PROGRESS (top bar) ──────────────────────────── */
+.scroll-progress {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  z-index: 2000;
+  background: transparent;
+  pointer-events: none;
+}
+.scroll-progress__bar {
+  height: 100%;
+  width: 0%;
+  background: var(--blue);
+  transition: width 0.1s linear;
+}

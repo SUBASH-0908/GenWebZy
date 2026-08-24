@@ -1,87 +1,113 @@
 import { PROJECTS } from '../data/siteData';
 import './Projects.css';
 
-// SVG arrow icon
-const ArrowIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-    <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-  </svg>
-);
+/* Category-based palette for placeholders */
+const PAL = {
+  'Business Website': { bg: '#eff6ff', line: '#2563eb' },
+  Portfolio:          { bg: '#f0fdf4', line: '#16a34a' },
+  'Landing Page':     { bg: '#fefce8', line: '#ca8a04' },
+  'E-Commerce':       { bg: '#fdf4ff', line: '#9333ea' },
+};
 
 function ProjectPlaceholder({ title, category }) {
-  const colors = {
-    'Business Website': '#e8f0fe',
-    'Portfolio': '#f0fdf4',
-    'Landing Page': '#fef9ee',
-  };
-  const bg = colors[category] || '#f5f5f5';
+  const p = PAL[category] || PAL['Business Website'];
   return (
-    <div className="project-card__placeholder" style={{ background: bg }}>
-      <span className="project-card__placeholder-text">{title}</span>
+    <div className="proj-ph" style={{ background: p.bg }}>
+      <div className="proj-ph__nav">
+        <div className="proj-ph__logo" style={{ background: p.line, opacity: 0.7 }} />
+        <div className="proj-ph__nav-r">
+          <div className="proj-ph__link" />
+          <div className="proj-ph__link" />
+          <div className="proj-ph__btn" style={{ background: p.line }} />
+        </div>
+      </div>
+      <div className="proj-ph__body">
+        <div className="proj-ph__h" style={{ background: p.line, opacity: 0.6 }} />
+        <div className="proj-ph__h proj-ph__h--sm" style={{ background: p.line, opacity: 0.35 }} />
+        <div className="proj-ph__p" />
+        <div className="proj-ph__actions">
+          <div className="proj-ph__cta" style={{ background: p.line }} />
+          <div className="proj-ph__ghost" />
+        </div>
+      </div>
+      <div className="proj-ph__label" style={{ color: p.line }}>{title}</div>
     </div>
   );
 }
 
 export default function Projects() {
+  const [featured, ...rest] = PROJECTS;
   return (
-    <section id="work" className="section section--alt projects" aria-labelledby="work-heading">
+    <section id="work" className="section projects" aria-labelledby="work-h">
       <div className="container">
-        <div className="section-intro reveal">
-          <span className="label">Selected Work</span>
-          <h2 id="work-heading" className="section-heading" style={{ marginTop: '1rem' }}>
-            A selection of websites and<br />concepts by GenWebZy.
+        <div className="projects__head reveal">
+          <span className="section-label">Selected Work</span>
+          <h2 id="work-h" className="projects__heading">
+            A selection of websites<br />by Genwebzy.
           </h2>
-          <p className="section-subtitle" style={{ marginTop: '1rem' }}>
-            Projects we have built, designed or conceptualized. Concept projects are
-            clearly labelled — we do not misrepresent demo work as paid client work.
+          <p className="projects__sub">
+            Projects we have built, designed or conceptualised.
+            Concept projects are clearly labelled.
           </p>
         </div>
 
-        <div className="projects__grid">
-          {PROJECTS.map((project, i) => (
-            <article
-              key={project.id}
-              className={`project-card reveal${i % 2 === 1 ? ' project-card--reverse' : ''}`}
-            >
-              <div className="project-card__image-wrap">
-                {project.image ? (
-                  <img
-                    src={project.image}
-                    alt={`${project.title} website screenshot`}
-                    className="project-card__image"
-                    loading="lazy"
-                  />
-                ) : (
-                  <ProjectPlaceholder title={project.title} category={project.category} />
-                )}
-                {project.isConcept && (
-                  <span className="project-card__badge">Concept Project</span>
-                )}
+        {/* Featured */}
+        {featured && (
+          <article className="proj-featured reveal reveal-d1">
+            <div className="proj-featured__img">
+              {featured.image
+                ? <img src={featured.image} alt={featured.title} loading="eager" />
+                : <ProjectPlaceholder title={featured.title} category={featured.category} />
+              }
+              {featured.isConcept && <span className="proj-badge">Concept</span>}
+            </div>
+            <div className="proj-featured__info">
+              <span className="proj-cat">{featured.category}</span>
+              <h3 className="proj-featured__title">{featured.title}</h3>
+              <p className="proj-desc">{featured.description}</p>
+              <div className="proj-tech">
+                {featured.technologies.map(t => <span key={t} className="proj-tech-item">{t}</span>)}
               </div>
-              <div className="project-card__info">
-                <span className="project-card__category label">{project.category}</span>
-                <h3 className="project-card__title">{project.title}</h3>
-                <p className="project-card__desc">{project.description}</p>
-                <div className="project-card__tech">
-                  {project.technologies.map(tech => (
-                    <span key={tech} className="project-card__tech-item">{tech}</span>
-                  ))}
-                </div>
-                {project.projectUrl ? (
-                  <a
-                    href={project.projectUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn btn--ghost project-card__link"
-                  >
-                    View Project <ArrowIcon />
+              {featured.projectUrl
+                ? <a href={featured.projectUrl} target="_blank" rel="noopener noreferrer" className="btn btn--outline">
+                    View Project →
                   </a>
-                ) : (
-                  <span className="project-card__soon">URL to be added</span>
-                )}
-              </div>
-            </article>
-          ))}
+                : <span className="proj-soon">URL not yet available</span>
+              }
+            </div>
+          </article>
+        )}
+
+        {/* Grid */}
+        {rest.length > 0 && (
+          <div className="proj-grid reveal reveal-d2">
+            {rest.map(p => (
+              <article key={p.id} className="proj-card">
+                <div className="proj-card__img">
+                  {p.image
+                    ? <img src={p.image} alt={p.title} loading="lazy" />
+                    : <ProjectPlaceholder title={p.title} category={p.category} />
+                  }
+                  {p.isConcept && <span className="proj-badge">Concept</span>}
+                </div>
+                <div className="proj-card__info">
+                  <span className="proj-cat">{p.category}</span>
+                  <h3 className="proj-card__title">{p.title}</h3>
+                  <div className="proj-tech">
+                    {p.technologies.map(t => <span key={t} className="proj-tech-item">{t}</span>)}
+                  </div>
+                  {p.projectUrl
+                    ? <a href={p.projectUrl} target="_blank" rel="noopener noreferrer" className="proj-link">View →</a>
+                    : <span className="proj-soon">Coming soon</span>
+                  }
+                </div>
+              </article>
+            ))}
+          </div>
+        )}
+
+        <div className="projects__cta reveal">
+          <a href="#contact" className="btn btn--outline">Work with us on your project</a>
         </div>
       </div>
     </section>

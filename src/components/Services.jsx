@@ -1,49 +1,56 @@
+import { useState } from 'react';
 import { SERVICES } from '../data/siteData';
 import './Services.css';
 
 export default function Services() {
+  const [active, setActive] = useState(null);
+
   return (
-    <section id="services" className="section services" aria-labelledby="services-heading">
+    <section id="services" className="section services" aria-labelledby="services-h">
       <div className="container">
-        <div className="section-intro reveal">
-          <span className="label">What We Do</span>
-          <h2 id="services-heading" className="section-heading" style={{ marginTop: '1rem' }}>
+        <div className="services__head reveal">
+          <span className="section-label">What We Do</span>
+          <h2 id="services-h" className="services__heading">
             From the first design to<br />the final deployment.
           </h2>
-          <p className="section-subtitle" style={{ marginTop: '1rem' }}>
-            We help turn ideas into working websites — covering every stage of the process.
-          </p>
         </div>
 
-        <div className="services__grid">
-          {SERVICES.map((service, i) => (
-            <article key={service.id} className="service-item reveal" style={{ '--delay': i * 0.08 + 's' }}>
-              <div className="service-item__number">{service.id}</div>
-              <div className="service-item__content">
-                <h3 className="service-item__title">{service.title}</h3>
-                <p className="service-item__desc">{service.description}</p>
-                {service.extras && (
-                  <ul className="service-item__extras">
-                    {service.extras.map(extra => (
-                      <li key={extra} className="service-item__extra">{extra}</li>
-                    ))}
-                  </ul>
-                )}
+        <div className="services__list reveal reveal-d1">
+          {SERVICES.map((s, i) => (
+            <div
+              key={s.id}
+              className={`svc-row${active === i ? ' svc-row--active' : ''}`}
+              onMouseEnter={() => setActive(i)}
+              onMouseLeave={() => setActive(null)}
+            >
+              <span className="svc-num">{s.id}</span>
+              <div className="svc-body">
+                <h3 className="svc-title">{s.title}</h3>
+                <div className="svc-expand">
+                  <div className="svc-expand__inner">
+                    <p className="svc-desc">{s.description}</p>
+                    {s.extras && (
+                      <div className="svc-tags">
+                        {s.extras.map(e => <span key={e} className="svc-tag">{e}</span>)}
+                      </div>
+                    )}
+                  </div>
+                </div>
               </div>
-            </article>
+              <a href="#contact" className="svc-cta">
+                Get a Quote
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                  <path d="M2.5 7h9M8 3.5l3.5 3.5L8 10.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </a>
+            </div>
           ))}
         </div>
 
-        <div className="services__footer reveal">
-          <p className="services__also">
-            <strong>Also available:</strong> Domain &amp; hosting setup &nbsp;·&nbsp;
-            WhatsApp integration &nbsp;·&nbsp; Contact forms &nbsp;·&nbsp;
-            Google Maps integration &nbsp;·&nbsp; Basic SEO &nbsp;·&nbsp;
-            Payment integration &nbsp;·&nbsp; Database integration
-          </p>
-          <a href="#contact" className="btn btn--outline">
-            Discuss Your Project
-          </a>
+        <div className="services__also reveal">
+          <strong>Also available:</strong>
+          &ensp;Domain &amp; hosting · WhatsApp integration · Contact forms ·
+          Google Maps · SEO basics · Payment integration
         </div>
       </div>
     </section>

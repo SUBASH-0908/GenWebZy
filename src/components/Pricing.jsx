@@ -1,64 +1,60 @@
 import { PRICING } from '../data/siteData';
 import './Pricing.css';
 
-const CheckIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-    <path d="M3 8l3.5 3.5L13 5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-  </svg>
-);
-
 export default function Pricing() {
   return (
-    <section className="section pricing" aria-labelledby="pricing-heading">
+    <section id="pricing" className="section pricing" aria-labelledby="pricing-h">
       <div className="container">
-        <div className="section-intro reveal">
-          <span className="label">Pricing</span>
-          <h2 id="pricing-heading" className="section-heading" style={{ marginTop: '1rem' }}>
-            Simple starting points.
-          </h2>
-          <p className="section-subtitle" style={{ marginTop: '1rem' }}>
-            Prices depend on pages, functionality, integrations and project requirements.
-            Every project starts with a conversation.
+        <div className="pricing__head reveal">
+          <span className="section-label">Pricing</span>
+          <h2 id="pricing-h" className="pricing__heading">Straightforward pricing.</h2>
+          <p className="pricing__sub">
+            No hidden fees. Scope, deliverables and cost are discussed
+            and agreed before any development begins.
           </p>
         </div>
 
-        <div className="pricing__grid">
+        <div className="pricing__grid reveal reveal-d1">
           {PRICING.map(plan => (
-            <div
+            <article
               key={plan.id}
-              className={`pricing-card reveal${plan.highlighted ? ' pricing-card--highlighted' : ''}`}
+              className={`price-card${plan.highlighted ? ' price-card--featured' : ''}`}
             >
-              {plan.highlighted && (
-                <span className="pricing-card__badge">Most Popular</span>
-              )}
-              <div className="pricing-card__header">
-                <h3 className="pricing-card__name">{plan.name}</h3>
-                <p className="pricing-card__audience">{plan.audience}</p>
+              {plan.highlighted && <div className="price-card__badge">Most Popular</div>}
+
+              <div className="price-card__top">
+                <h3 className="price-card__name">{plan.name}</h3>
+                <p className="price-card__audience">{plan.audience}</p>
               </div>
-              <div className="pricing-card__price">
+
+              <div className="price-card__price-wrap">
                 {plan.priceNote && (
-                  <span className="pricing-card__price-note">{plan.priceNote}</span>
+                  <span className="price-card__note">{plan.priceNote}</span>
                 )}
-                <span className="pricing-card__price-value">{plan.price}</span>
+                <div className="price-card__price">{plan.price}</div>
               </div>
-              <ul className="pricing-card__features">
-                {plan.features.map(feat => (
-                  <li key={feat} className="pricing-card__feature">
-                    <span className="pricing-card__check"><CheckIcon /></span>
-                    {feat}
+
+              <ul className="price-card__features">
+                {plan.features.map(f => (
+                  <li key={f} className="price-card__feature">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                      <path d="M2.5 7l3 3 6-6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                    {f}
                   </li>
                 ))}
               </ul>
-              <a href="#contact" className={`btn pricing-card__cta${plan.highlighted ? ' btn--primary' : ' btn--outline'}`}>
+
+              <a href="#contact" className={`btn price-card__cta${plan.highlighted ? ' btn--primary' : ' btn--outline'}`}>
                 {plan.cta}
               </a>
-            </div>
+            </article>
           ))}
         </div>
 
         <p className="pricing__disclaimer reveal">
-          * All prices are in Indian Rupees (₹) and serve as starting points.
-          Final pricing is confirmed after discussing your specific requirements.
+          All prices are discussed and agreed upon before development begins.
+          Timelines and payment terms are included in the project quotation.
         </p>
       </div>
     </section>

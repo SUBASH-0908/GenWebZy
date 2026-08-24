@@ -1,41 +1,50 @@
 import { useScrollReveal } from './hooks/useScrollReveal';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import Introduction from './components/Introduction';
-import Services from './components/Services';
-import Projects from './components/Projects';
-import DemoWebsites from './components/DemoWebsites';
-import Process from './components/Process';
-import WhyChooseUs from './components/WhyChooseUs';
-import About from './components/About';
-import Technologies from './components/Technologies';
-import Pricing from './components/Pricing';
-import FAQ from './components/FAQ';
-import WhatsAppCTA from './components/WhatsAppCTA';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
+
+import Navbar         from './components/Navbar';
+import Hero           from './components/Hero';
+import Introduction   from './components/Introduction';
+import DemoWebsites   from './components/DemoWebsites';
+import Services       from './components/Services';
+import Projects       from './components/Projects';
+import Process        from './components/Process';
+import WhyChooseUs    from './components/WhyChooseUs';
+import About          from './components/About';
+import Technologies   from './components/Technologies';
+import Pricing        from './components/Pricing';
+import FAQ            from './components/FAQ';
+import Reviews        from './components/Reviews';
+import Contact        from './components/Contact';
+import WhatsAppCTA    from './components/WhatsAppCTA';
+import Footer         from './components/Footer';
+import ScrollProgress from './components/ScrollProgress';
+import WhatsAppFloat  from './components/WhatsAppFloat';
 
 export default function App() {
   useScrollReveal();
 
   return (
     <>
+      <ScrollProgress />
       <Navbar />
+      <WhatsAppFloat />
+
       <main id="main-content">
         <Hero />
         <Introduction />
+        <DemoWebsites />
         <Services />
         <Projects />
-        <DemoWebsites />
         <Process />
         <WhyChooseUs />
         <About />
         <Technologies />
         <Pricing />
+        <Reviews />
         <FAQ />
-        <WhatsAppCTA />
         <Contact />
+        <WhatsAppCTA />
       </main>
+
       <Footer />
     </>
   );
