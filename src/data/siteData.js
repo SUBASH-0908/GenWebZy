@@ -6,13 +6,25 @@
 // ============================================================
 import _content from './content.json';
 
-// ─── ADMIN-MANAGED EXPORTS ───────────────────────────────────
-export const CONTACT  = _content.contact;
-export const SERVICES = (_content.services || []).filter(s => s.visible !== false);
-export const PROJECTS = (_content.projects || []).filter(p => p.visible !== false);
-export const PRICING  = (_content.pricing || []).filter(p => p.visible !== false);
-export const FAQ      = (_content.faq || []).filter(f => f.visible !== false);
-export const REVIEWS  = (_content.reviews || []).filter(r => r.visible !== false);
+const getSiteContent = () => {
+  try {
+    const local = typeof window !== 'undefined' && window.localStorage.getItem('genwebzy_site_content');
+    if (local) {
+      return JSON.parse(local);
+    }
+  } catch (e) {}
+  return _content;
+};
+
+const activeContent = getSiteContent();
+
+export const CONTACT  = activeContent.contact || _content.contact;
+export const SERVICES = (activeContent.services || _content.services || []).filter(s => s.visible !== false);
+export const PROJECTS = (activeContent.projects || _content.projects || []).filter(p => p.visible !== false);
+export const PRICING  = (activeContent.pricing || _content.pricing || []).filter(p => p.visible !== false);
+export const FAQ      = (activeContent.faq || _content.faq || []).filter(f => f.visible !== false);
+export const REVIEWS  = (activeContent.reviews || _content.reviews || []).filter(r => r.visible !== false);
+
 
 
 

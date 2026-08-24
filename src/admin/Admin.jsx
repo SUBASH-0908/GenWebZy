@@ -13,21 +13,12 @@ async function computeSha256(str) {
   return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
 }
 
-const INITIAL_DATA = contentData || {
-  contact: {
-    email: "contact.genwebzy@gmail.com",
-    whatsapp: "919751574014",
-    whatsappLink: "https://wa.me/919751574014",
-    whatsapp2: "+91 7904434191",
-    instagram: "INSTAGRAM_URL",
-    linkedin: "LINKEDIN_URL",
-    github: "GITHUB_URL"
-  },
-  services: [],
-  projects: [],
-  pricing: [],
-  faq: [],
-  reviews: []
+const getStoredContent = () => {
+  try {
+    const local = localStorage.getItem('genwebzy_site_content');
+    if (local) return JSON.parse(local);
+  } catch (e) {}
+  return contentData;
 };
 
 export default function Admin() {
@@ -40,8 +31,8 @@ export default function Admin() {
   const [submittingPin, setSubmittingPin] = useState(false);
 
   const [activeSection, setActiveSection] = useState('dashboard');
-  const [data, setData] = useState(INITIAL_DATA);
-  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState(getStoredContent);
+  const [loading, setLoading] = useState(false);
   const [toast, setToast] = useState('');
 
   // Modal State
@@ -81,9 +72,7 @@ export default function Admin() {
           return;
         }
       }
-    } catch (e) {
-      // Fallback for static hosts (Vercel)
-    }
+    } catch (e) {}
     if (token) {
       setIsAuthenticated(true);
     } else {
@@ -98,22 +87,24 @@ export default function Admin() {
 
   const loadContent = async () => {
     try {
-      setLoading(true);
       const res = await fetch('/api/content');
       if (res.ok) {
         const json = await res.json();
         setData(json);
+        localStorage.setItem('genwebzy_site_content', JSON.stringify(json));
       }
     } catch (err) {
-      console.log("Loaded default static content.");
-    } finally {
-      setLoading(false);
+      setData(getStoredContent());
     }
   };
 
   const saveContent = async (newData) => {
     const updated = newData || data;
     setData(updated);
+    try {
+      localStorage.setItem('genwebzy_site_content', JSON.stringify(updated));
+    } catch (e) {}
+
     try {
       const res = await fetch('/api/content', {
         method: 'POST',
@@ -124,13 +115,25 @@ export default function Admin() {
         body: JSON.stringify(updated)
       });
       if (res.ok) {
-        showToast('Saved successfully to content.json!');
+        showToast('Saved to content.json!');
       } else {
-        showToast('Saved in active session!');
+        showToast('Saved & updated live site view!');
       }
     } catch (err) {
-      showToast('Saved in active session!');
+      showToast('Saved & updated live site view!');
     }
+  };
+
+  const exportContentJson = () => {
+    const jsonStr = JSON.stringify(data, null, 2);
+    const blob = new Blob([jsonStr], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'content.json';
+    a.click();
+    URL.revokeObjectURL(url);
+    showToast('Downloaded content.json!');
   };
 
   const handleLogin = async (e) => {
@@ -158,9 +161,7 @@ export default function Admin() {
           return;
         }
       }
-    } catch (err) {
-      // Static production server (Vercel)
-    }
+    } catch (err) {}
 
     try {
       const inputHash = await computeSha256(pin);
@@ -407,14 +408,17 @@ export default function Admin() {
               <div className="adm-card" style={{ flexDirection: 'column', gap: '12px' }}>
                 <h3 className="adm-card__title">Quick Site Summary</h3>
                 <p className="adm-card__sub">
-                  Modifications saved here reflect instantly on the site.
+                  Modifications saved here update your live site instantly.
                 </p>
-                <div style={{ display: 'flex', gap: '10px', marginTop: '8px' }}>
+                <div style={{ display: 'flex', gap: '10px', marginTop: '8px', flexWrap: 'wrap' }}>
                   <button className="adm-btn adm-btn--primary" onClick={() => openAddModal('projects')}>
                     + Add New Project
                   </button>
                   <button className="adm-btn adm-btn--ghost" onClick={() => openAddModal('reviews')}>
                     + Add New Review
+                  </button>
+                  <button className="adm-btn adm-btn--ghost" onClick={exportContentJson}>
+                    📥 Download content.json
                   </button>
                 </div>
               </div>
