@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import contentData from '../data/content.json';
 import './Admin.css';
 
 // One-way cryptographic SHA-256 hash of PIN 2027 (PIN is never stored in plain text)
@@ -12,7 +13,7 @@ async function computeSha256(str) {
   return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
 }
 
-const INITIAL_DATA = {
+const INITIAL_DATA = contentData || {
   contact: {
     email: "contact.genwebzy@gmail.com",
     whatsapp: "919751574014",
@@ -83,7 +84,6 @@ export default function Admin() {
     } catch (e) {
       // Fallback for static hosts (Vercel)
     }
-    // If token exists in session, stay authenticated
     if (token) {
       setIsAuthenticated(true);
     } else {
@@ -140,7 +140,6 @@ export default function Admin() {
     setPinError('');
 
     try {
-      // 1. Try server backend verification first
       const res = await fetch('/api/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -160,10 +159,9 @@ export default function Admin() {
         }
       }
     } catch (err) {
-      // Static production server (Vercel) doesn't run local Node API
+      // Static production server (Vercel)
     }
 
-    // 2. Production fallback: One-way SHA-256 hash comparison
     try {
       const inputHash = await computeSha256(pin);
       if (inputHash === PIN_SHA256_HASH) {
