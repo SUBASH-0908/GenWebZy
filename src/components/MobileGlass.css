@@ -52,19 +52,29 @@
   .rv-card,
   .rv-form-wrap,
   .faq-item,
-  .contact__detail,
-  .services__also,
-  .intro__pillar {
-    background: rgba(255, 255, 255, 0.15) !important;
-    background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, transparent 40%) !important;
-    backdrop-filter: blur(24px) saturate(180%) !important;
-    -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
-    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    background-image: linear-gradient(110deg, transparent 20%, rgba(255, 255, 255, 0.25) 45%, transparent 70%) !important;
+    background-size: 250% 100% !important;
+    animation: caustic-sweep 8s infinite linear !important;
+    backdrop-filter: blur(28px) saturate(200%) contrast(110%) !important;
+    -webkit-backdrop-filter: blur(28px) saturate(200%) contrast(110%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.35) !important;
     box-shadow: 
-      0 8px 32px rgba(0, 0, 0, 0.18),
-      inset 0 1px 1px rgba(255, 255, 255, 0.4) !important;
-    border-radius: 24px !important;
-    transition: all 0.3s ease !important;
+      0 12px 40px rgba(0, 0, 0, 0.12),
+      inset 0 1px 1px rgba(255, 255, 255, 0.7),
+      inset 0 -2px 4px rgba(0, 0, 0, 0.05) !important;
+    border-radius: 28px !important;
+    transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+  }
+  
+  @keyframes caustic-sweep {
+    0% { background-position: 250% 0; }
+    100% { background-position: -250% 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .glass-card, .hero__preview, .proj-card, .proj-featured, .svc-row, .process__step, .why-item, .team-card, .price-card, .rv-card, .rv-form-wrap, .faq-item, .contact__detail, .services__also, .intro__pillar {
+      animation: none !important;
+    }
   }
 
   /* ─── LAYER 4 & 5: FLOATING GLASS & TOUCH INTERACTION ────── */
@@ -85,12 +95,13 @@
   .process__step:active,
   .team-card:active,
   .price-card:active {
-    transform: scale(0.98) !important;
-    border-color: rgba(255, 255, 255, 0.15) !important;
-    background: rgba(255, 255, 255, 0.1) !important;
+    transform: perspective(800px) scale(0.97) rotateX(2deg) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+    background-color: rgba(255, 255, 255, 0.06) !important;
     box-shadow: 
-      0 4px 16px rgba(0, 0, 0, 0.1),
-      inset 0 1px 1px rgba(255, 255, 255, 0.2) !important;
+      0 4px 16px rgba(0, 0, 0, 0.08),
+      inset 0 1px 1px rgba(255, 255, 255, 0.3),
+      inset 0 -1px 2px rgba(0, 0, 0, 0.1) !important;
   }
 
   .btn:active {
@@ -422,14 +433,20 @@
   /* ─── 15. CONTACT (ELEVATED GLASS CONTROL CTA) ─────────── */
   .contact { padding-bottom: 4rem !important; }
   .contact__inner {
-    background: rgba(255, 255, 255, 0.15) !important;
-    background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.25) 0%, transparent 40%) !important;
-    backdrop-filter: blur(24px) saturate(180%) !important;
-    -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
-    border: 1px solid rgba(255, 255, 255, 0.3) !important;
-    border-radius: 28px !important;
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.4) !important;
-    padding: 2rem 1.25rem !important;
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    background-image: linear-gradient(110deg, transparent 20%, rgba(255, 255, 255, 0.3) 45%, transparent 70%) !important;
+    background-size: 250% 100% !important;
+    animation: caustic-sweep 8s infinite linear !important;
+    backdrop-filter: blur(28px) saturate(200%) contrast(110%) !important;
+    -webkit-backdrop-filter: blur(28px) saturate(200%) contrast(110%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.35) !important;
+    border-radius: 32px !important;
+    box-shadow: 
+      0 16px 48px rgba(0, 0, 0, 0.12),
+      inset 0 1px 1px rgba(255, 255, 255, 0.7),
+      inset 0 -2px 4px rgba(0, 0, 0, 0.05) !important;
+    padding: 2.25rem 1.25rem !important;
+    transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
   }
   .contact__heading { color: var(--navy) !important; font-weight: 800 !important; font-size: 2rem !important; }
   .contact__sub { color: #475569 !important; }
@@ -488,6 +505,17 @@
   }
   .footer__logo-img { height: 38px !important; mix-blend-mode: multiply !important; filter: none !important; }
   .footer__desc { color: #64748b !important; }
+  
+  .footer__social {
+    color: var(--navy) !important;
+    border-color: rgba(0, 0, 0, 0.12) !important;
+    background: rgba(255, 255, 255, 0.5) !important;
+  }
+  .footer__social:hover {
+    color: var(--blue) !important;
+    border-color: rgba(0, 0, 0, 0.25) !important;
+  }
+
   .footer__col-heading { color: #0c1120 !important; font-weight: 700 !important; }
   .footer__link { color: #475569 !important; }
   .footer__link:hover { color: #2563eb !important; }
