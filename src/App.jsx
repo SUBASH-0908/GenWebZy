@@ -19,6 +19,7 @@ import Footer         from './components/Footer';
 import ScrollProgress from './components/ScrollProgress';
 import WhatsAppFloat  from './components/WhatsAppFloat';
 import MobileBottomBar from './components/MobileBottomBar';
+import './components/MobileGlass.css';
 
 export default function App() {
   useScrollReveal();

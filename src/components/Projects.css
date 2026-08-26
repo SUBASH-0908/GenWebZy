@@ -112,51 +112,26 @@
 .projects__cta { text-align: center; padding-top: var(--s2); }
 
 @media (max-width: 768px) {
-  .projects { border-bottom-color: rgba(255, 255, 255, 0.08); }
-  .projects__heading { color: #ffffff; }
-  .projects__sub { color: #94a3b8; }
   .proj-featured {
     grid-template-columns: 1fr;
-    background: rgba(15, 23, 42, 0.65);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
     border-radius: 16px;
     overflow: hidden;
   }
   .proj-featured__img { min-height: 200px; }
   .proj-featured__info { padding: var(--s6) var(--s4); }
-  .proj-featured__title { font-size: var(--2xl); color: #ffffff; }
-  .proj-featured__desc { color: #94a3b8; }
-  
+  .proj-featured__title { font-size: var(--2xl); }
   .proj-grid {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
+    display: flex; overflow-x: auto; scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
-    gap: var(--s4);
-    padding-top: var(--s2);
-    padding-bottom: var(--s6);
-    margin-left: calc(-1 * var(--s4));
-    margin-right: calc(-1 * var(--s4));
-    padding-left: var(--s4);
-    padding-right: var(--s4);
+    gap: var(--s4); padding-top: var(--s2); padding-bottom: var(--s6);
+    margin-left: calc(-1 * var(--s4)); margin-right: calc(-1 * var(--s4));
+    padding-left: var(--s4); padding-right: var(--s4);
     scrollbar-width: none;
   }
   .proj-grid::-webkit-scrollbar { display: none; }
   .proj-card {
-    flex: 0 0 84vw;
-    max-width: 320px;
-    scroll-snap-align: center;
-    scroll-snap-stop: always;
-    background: rgba(15, 23, 42, 0.65);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
-    border-radius: 16px;
+    flex: 0 0 84vw; max-width: 320px;
+    scroll-snap-align: center; scroll-snap-stop: always;
+    border-radius: 14px;
   }
-  .proj-card__title { color: #ffffff; }
-  .proj-card__desc { color: #94a3b8; }
 }

@@ -108,43 +108,18 @@
 }
 
 @media (max-width: 900px) {
-  .pricing { border-bottom-color: rgba(255, 255, 255, 0.08); }
-  .pricing__heading { color: #ffffff; }
-  .pricing__sub { color: #94a3b8; }
   .pricing__grid {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
+    display: flex; overflow-x: auto; scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
-    gap: var(--s4);
-    padding-top: var(--s3);
-    padding-bottom: var(--s6);
-    margin-left: calc(-1 * var(--s4));
-    margin-right: calc(-1 * var(--s4));
-    padding-left: var(--s4);
-    padding-right: var(--s4);
-    scrollbar-width: none;
-    max-width: none;
+    gap: var(--s4); padding-top: var(--s3); padding-bottom: var(--s6);
+    margin-left: calc(-1 * var(--s4)); margin-right: calc(-1 * var(--s4));
+    padding-left: var(--s4); padding-right: var(--s4);
+    scrollbar-width: none; max-width: none;
   }
   .pricing__grid::-webkit-scrollbar { display: none; }
   .price-card {
-    flex: 0 0 84vw;
-    max-width: 320px;
-    scroll-snap-align: center;
-    scroll-snap-stop: always;
-    background: rgba(15, 23, 42, 0.65);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+    flex: 0 0 84vw; max-width: 320px;
+    scroll-snap-align: center; scroll-snap-stop: always;
     border-radius: 16px;
   }
-  .price-card--featured {
-    background: rgba(37, 99, 235, 0.25);
-    border-color: rgba(147, 197, 253, 0.5);
-    box-shadow: 0 16px 40px rgba(37, 99, 235, 0.3);
-  }
-  .price-card__name { color: #ffffff; }
-  .price-card__price { color: #ffffff; }
-  .price-card__feature { color: #cbd5e1; }
 }

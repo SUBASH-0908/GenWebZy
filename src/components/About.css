@@ -63,42 +63,18 @@
 
 @media (max-width: 1100px) { .team__grid { grid-template-columns: repeat(3,1fr); } }
 @media (max-width: 768px) {
-  .about { border-bottom-color: rgba(255, 255, 255, 0.08); }
-  .about__heading { color: #ffffff; }
-  .about__sub { color: #94a3b8; }
   .team__grid {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
+    display: flex; overflow-x: auto; scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
-    gap: var(--s4);
-    padding-top: var(--s2);
-    padding-bottom: var(--s6);
-    margin-left: calc(-1 * var(--s4));
-    margin-right: calc(-1 * var(--s4));
-    padding-left: var(--s4);
-    padding-right: var(--s4);
+    gap: var(--s4); padding-top: var(--s2); padding-bottom: var(--s6);
+    margin-left: calc(-1 * var(--s4)); margin-right: calc(-1 * var(--s4));
+    padding-left: var(--s4); padding-right: var(--s4);
     scrollbar-width: none;
   }
   .team__grid::-webkit-scrollbar { display: none; }
   .team-card {
-    flex: 0 0 76vw;
-    max-width: 270px;
-    scroll-snap-align: center;
-    scroll-snap-stop: always;
-    background: rgba(15, 23, 42, 0.65);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+    flex: 0 0 76vw; max-width: 270px;
+    scroll-snap-align: center; scroll-snap-stop: always;
     border-radius: 16px;
-  }
-  .team-card__name { color: #ffffff; }
-  .team-card__role { color: #93c5fd; }
-  .team-card__bio  { color: #94a3b8; }
-  .team-card__skill {
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    color: #cbd5e1;
   }
 }
