@@ -55,9 +55,10 @@
     background-color: rgba(255, 255, 255, 0.1) !important;
     background-image: linear-gradient(110deg, transparent 20%, rgba(255, 255, 255, 0.25) 45%, transparent 70%) !important;
     background-size: 250% 100% !important;
-    animation: caustic-sweep 8s infinite linear !important;
-    backdrop-filter: blur(28px) saturate(200%) contrast(110%) !important;
-    -webkit-backdrop-filter: blur(28px) saturate(200%) contrast(110%) !important;
+    backdrop-filter: blur(12px) saturate(180%) contrast(105%) !important;
+    -webkit-backdrop-filter: blur(12px) saturate(180%) contrast(105%) !important;
+    transform: translateZ(0);
+    will-change: transform;
     border: 1px solid rgba(255, 255, 255, 0.35) !important;
     box-shadow: 
       0 12px 40px rgba(0, 0, 0, 0.12),
@@ -80,8 +81,9 @@
   /* ─── LAYER 4 & 5: FLOATING GLASS & TOUCH INTERACTION ────── */
   .glass-pill {
     background: rgba(255, 255, 255, 0.75) !important;
-    backdrop-filter: blur(16px) saturate(180%) !important;
-    -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+    backdrop-filter: blur(10px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(10px) saturate(180%) !important;
+    transform: translateZ(0);
     border: 1px solid rgba(255, 255, 255, 0.85) !important;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06), inset 0 1px 1px #ffffff !important;
     border-radius: 9999px !important;
@@ -436,9 +438,10 @@
     background-color: rgba(255, 255, 255, 0.1) !important;
     background-image: linear-gradient(110deg, transparent 20%, rgba(255, 255, 255, 0.3) 45%, transparent 70%) !important;
     background-size: 250% 100% !important;
-    animation: caustic-sweep 8s infinite linear !important;
-    backdrop-filter: blur(28px) saturate(200%) contrast(110%) !important;
-    -webkit-backdrop-filter: blur(28px) saturate(200%) contrast(110%) !important;
+    backdrop-filter: blur(16px) saturate(200%) contrast(110%) !important;
+    -webkit-backdrop-filter: blur(16px) saturate(200%) contrast(110%) !important;
+    transform: translateZ(0);
+    will-change: transform;
     border: 1px solid rgba(255, 255, 255, 0.35) !important;
     border-radius: 32px !important;
     box-shadow: 
