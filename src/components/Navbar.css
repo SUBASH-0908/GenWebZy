@@ -145,11 +145,12 @@
 @media (max-width: 768px) {
   .navbar {
     z-index: 1300 !important;
-    background: rgba(255, 255, 255, 0.7) !important;
-    backdrop-filter: blur(24px) saturate(190%) !important;
-    -webkit-backdrop-filter: blur(24px) saturate(190%) !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.8) !important;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04), inset 0 -1px 0 rgba(255, 255, 255, 0.5) !important;
+    background: rgba(255, 255, 255, 0.15) !important;
+    background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, transparent 40%) !important;
+    backdrop-filter: blur(24px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15), inset 0 1px 1px rgba(255, 255, 255, 0.4) !important;
   }
 
   .navbar__inner { justify-content: space-between !important; }
@@ -171,11 +172,12 @@
   }
 
   .mobile-menu {
-    background: rgba(255, 255, 255, 0.45) !important;
-    backdrop-filter: blur(48px) saturate(180%) !important;
-    -webkit-backdrop-filter: blur(48px) saturate(180%) !important;
-    border-left: 1px solid rgba(255, 255, 255, 0.7) !important;
-    box-shadow: -15px 0 40px rgba(0, 0, 0, 0.08) !important;
+    background: rgba(255, 255, 255, 0.15) !important;
+    background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.25) 0%, transparent 20%) !important;
+    backdrop-filter: blur(32px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(32px) saturate(180%) !important;
+    border-left: 1px solid rgba(255, 255, 255, 0.3) !important;
+    box-shadow: -15px 0 40px rgba(0, 0, 0, 0.2) !important;
   }
   .mobile-menu__link { color: var(--navy) !important; font-size: var(--md) !important; font-weight: 600 !important; }
   .mobile-menu__link:hover { color: var(--blue) !important; background: rgba(0, 0, 0, 0.04) !important; }
