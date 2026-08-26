@@ -228,7 +228,7 @@
       "rating": 5,
       "text": "Genwebzy delivered a polished, fast business website in under 2 weeks. The design is clean and our customers love how easy it is to navigate. Highly recommended for any local business.",
       "avatar": "AS",
-      "visible": false
+      "visible": true
     },
     {
       "id": 2,
@@ -238,7 +238,7 @@
       "rating": 5,
       "text": "I needed a portfolio that reflected my design work and Genwebzy nailed it. The attention to detail was impressive — every section was exactly how I envisioned it.",
       "avatar": "PN",
-      "visible": true
+      "visible": false
     },
     {
       "id": 3,
@@ -248,7 +248,7 @@
       "rating": 5,
       "text": "We got a conversion-focused landing page for our product launch. The WhatsApp integration alone brought in 30+ enquiries in the first week. Excellent work and great communication throughout.",
       "avatar": "MF",
-      "visible": true
+      "visible": false
     }
   ]
 }
