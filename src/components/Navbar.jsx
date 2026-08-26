@@ -42,7 +42,7 @@ export default function Navbar() {
 
   return (
     <>
-      <header className={`navbar${scrolled ? ' navbar--scrolled' : ''}`} role="banner">
+      <header className={`navbar${scrolled ? ' navbar--scrolled' : ''}${open ? ' navbar--open' : ''}`} role="banner">
         <div className="navbar__inner container">
           <a href="#home" className="navbar__logo" onClick={close} aria-label="Genwebzy home">
             <img

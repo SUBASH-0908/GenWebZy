@@ -144,11 +144,19 @@
 /* ─── MOBILE OVERRIDES (≤ 768px ONLY) ────────────────────── */
 @media (max-width: 768px) {
   .navbar {
-    background: rgba(255, 255, 255, 0.75) !important;
+    z-index: 1300 !important;
+    background: rgba(255, 255, 255, 0.7) !important;
     backdrop-filter: blur(24px) saturate(190%) !important;
     -webkit-backdrop-filter: blur(24px) saturate(190%) !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.85) !important;
-    box-shadow: 0 4px 20px rgba(12, 17, 32, 0.04), inset 0 -1px 0 rgba(255, 255, 255, 0.5) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.8) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04), inset 0 -1px 0 rgba(255, 255, 255, 0.5) !important;
+  }
+  .navbar--open {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border-bottom: 1px solid transparent !important;
+    box-shadow: none !important;
   }
   .navbar__inner { justify-content: space-between !important; }
   .navbar__nav { display: none !important; }
@@ -170,9 +178,9 @@
 
   .mobile-menu {
     width: 100vw !important;
-    background: rgba(255, 255, 255, 0.65) !important;
-    backdrop-filter: blur(32px) saturate(200%) !important;
-    -webkit-backdrop-filter: blur(32px) saturate(200%) !important;
+    background: rgba(255, 255, 255, 0.45) !important;
+    backdrop-filter: blur(48px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(48px) saturate(180%) !important;
     border: none !important;
     box-shadow: none !important;
     padding-top: calc(var(--navbar-h) + var(--s8)) !important;
