@@ -5,7 +5,7 @@
     "whatsappLink": "https://wa.me/919751574014",
     "whatsapp2": "+91 7904434191",
     "instagram": "INSTAGRAM_URL",
-    "linkedin": "LINKEDIN_URL",
+    "linkedin": "https://www.linkedin.com/in/genwebzy/",
     "github": "GITHUB_URL"
   },
   "services": [
@@ -189,12 +189,14 @@
     {
       "id": 2,
       "question": "Do you provide domain and hosting?",
-      "answer": "Yes. If required, GenWebZy can help with domain and hosting setup as part of the project."
+      "answer": "Yes. If required, GenWebZy can help with domain and hosting setup as part of the project.",
+      "visible": true
     },
     {
       "id": 3,
       "question": "Can you redesign an existing website?",
-      "answer": "Yes. Existing websites can be redesigned and modernized based on the requirement."
+      "answer": "Yes. Existing websites can be redesigned and modernized based on the requirement.",
+      "visible": true
     },
     {
       "id": 4,

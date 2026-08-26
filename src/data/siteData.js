@@ -102,13 +102,13 @@ export const DEMOS = [
 export const TEAM = [
   {
     id: "TEAM_MEMBER_01",
-    name: "Subash",       // Replace with actual name
+    name: "Subash",
     role: "Founder / Project Lead",
     bio: "Leads the team and manages client relationships, project planning and overall delivery.",
     skills: ["Project Management", "Web Strategy", "Client Communication"],
-    linkedin: null,                // Replace with LinkedIn URL
-    github: null,                  // Replace with GitHub URL
-    photo: null,                   // Replace with photo path
+    linkedin: null,
+    github: null,
+    photo: "/team/subash.png",
   },
   {
     id: "TEAM_MEMBER_02",
@@ -118,7 +118,7 @@ export const TEAM = [
     skills: ["HTML", "CSS", "JavaScript", "React"],
     linkedin: null,
     github: null,
-    photo: null,
+    photo: "/team/saran.png",
   },
   {
     id: "TEAM_MEMBER_03",
@@ -128,7 +128,7 @@ export const TEAM = [
     skills: ["Node.js", "Express", "MongoDB", "Python"],
     linkedin: null,
     github: null,
-    photo: null,
+    photo: "/team/thiru.png",
   },
   {
     id: "TEAM_MEMBER_04",
@@ -138,7 +138,7 @@ export const TEAM = [
     skills: ["Figma", "UI Design", "UX Research", "Prototyping"],
     linkedin: null,
     github: null,
-    photo: null,
+    photo: "/team/sasi.png",
   },
   {
     id: "TEAM_MEMBER_05",
@@ -148,7 +148,7 @@ export const TEAM = [
     skills: ["Client Relations", "Social Media", "Content Strategy", "SEO Basics"],
     linkedin: null,
     github: null,
-    photo: null,
+    photo: "/team/udaya.png",
   },
 ];
 
