@@ -151,13 +151,7 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.8) !important;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04), inset 0 -1px 0 rgba(255, 255, 255, 0.5) !important;
   }
-  .navbar--open {
-    background: transparent !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-    border-bottom: 1px solid transparent !important;
-    box-shadow: none !important;
-  }
+
   .navbar__inner { justify-content: space-between !important; }
   .navbar__nav { display: none !important; }
   .navbar__hamburger {
