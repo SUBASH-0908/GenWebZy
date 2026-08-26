@@ -18,7 +18,6 @@ import WhatsAppCTA    from './components/WhatsAppCTA';
 import Footer         from './components/Footer';
 import ScrollProgress from './components/ScrollProgress';
 import WhatsAppFloat  from './components/WhatsAppFloat';
-import MobileBottomBar from './components/MobileBottomBar';
 import './components/MobileGlass.css';
 
 export default function App() {
@@ -29,7 +28,6 @@ export default function App() {
       <ScrollProgress />
       <Navbar />
       <WhatsAppFloat />
-      <MobileBottomBar />
 
       <main id="main-content">
         <Hero />
