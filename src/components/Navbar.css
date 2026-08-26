@@ -176,12 +176,11 @@
   }
 
   .mobile-menu {
-    background: rgba(255, 255, 255, 0.15) !important;
-    background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.25) 0%, transparent 20%) !important;
+    background: rgba(255, 255, 255, 0.95) !important;
     backdrop-filter: blur(32px) saturate(180%) !important;
     -webkit-backdrop-filter: blur(32px) saturate(180%) !important;
-    border-left: 1px solid rgba(255, 255, 255, 0.3) !important;
-    box-shadow: -15px 0 40px rgba(0, 0, 0, 0.2) !important;
+    border-left: 1px solid rgba(255, 255, 255, 0.8) !important;
+    box-shadow: -15px 0 40px rgba(0, 0, 0, 0.12) !important;
   }
   .mobile-menu__link { color: var(--navy) !important; font-size: var(--md) !important; font-weight: 600 !important; }
   .mobile-menu__link:hover { color: var(--blue) !important; background: rgba(0, 0, 0, 0.04) !important; }
