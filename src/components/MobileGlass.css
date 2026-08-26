@@ -1,384 +1,471 @@
 /*
  * ══════════════════════════════════════════════════════════════
- *  GENWEBZY — MOBILE GLASS DESIGN SYSTEM
+ *  GENWEBZY — MASTER MOBILE LIQUID GLASS MATERIAL SYSTEM
  *  Applies ONLY on screens ≤ 768px.
- *  Desktop (≥ 769px) is 100% untouched.
+ *  Desktop (≥ 769px) is 100% UNTOUCHED.
  * ══════════════════════════════════════════════════════════════
  */
 
-/* ─── 1. BODY / PAGE FOUNDATION ──────────────────────────── */
 @media (max-width: 768px) {
-  html { overflow-x: hidden; }
+  /* ─── LAYER 1: BASE BACKGROUND ───────────────────────────── */
+  html {
+    overflow-x: hidden !important;
+  }
   body {
-    background-color: #090d1a !important;
-    background-image:
-      radial-gradient(circle at 10% 10%, rgba(37,99,235,0.08) 0%, transparent 45%),
-      radial-gradient(circle at 90% 85%, rgba(59,130,246,0.06) 0%, transparent 50%) !important;
+    background-color: var(--surface) !important;
+    background-image: none !important;
     background-attachment: fixed !important;
-    color: #e2e8f0 !important;
+    color: var(--navy) !important;
     padding-bottom: 0px !important;
     overflow-x: hidden !important;
   }
 
-  /* Liquid Glass Utility Surfaces for Mobile */
-  .glass-pill {
-    background: rgba(255, 255, 255, 0.04) !important;
-    backdrop-filter: blur(12px) !important;
-    -webkit-backdrop-filter: blur(12px) !important;
-    border: 1px solid rgba(255, 255, 255, 0.08) !important;
-  }
-  
-  .glass-card {
-    background: rgba(255, 255, 255, 0.04) !important;
-    backdrop-filter: blur(16px) !important;
-    -webkit-backdrop-filter: blur(16px) !important;
-    border: 1px solid rgba(255, 255, 255, 0.08) !important;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35) !important;
-  }
-
-  /* Ensure all top-level section text is light */
-  .section-label { color: rgba(255,255,255,0.4) !important; }
-
-  /* Global border dividers */
-  .section { border-color: rgba(255,255,255,0.07) !important; }
-}
-
-/* ─── 2. HERO ─────────────────────────────────────────────── */
-@media (max-width: 768px) {
-  .hero {
+  /* Section containers - clean transparent separation */
+  .section {
     background: transparent !important;
-    border-bottom: 1px solid rgba(255,255,255,0.07) !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04) !important;
+    padding: 3rem 0 !important;
+  }
+  .section--alt, .section--dark {
+    background: transparent !important;
+    color: var(--navy) !important;
+  }
+
+  /* ─── LAYER 2: TRANSPARENT TYPOGRAPHY ────────────────────── */
+  .section-label {
+    color: #2563eb !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.12em !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  /* ─── LAYER 3: REALISTIC FROSTED GLASS SURFACES ──────────── */
+  .glass-card,
+  .hero__preview,
+  .proj-card,
+  .proj-featured,
+  .svc-row,
+  .process__step,
+  .why-item,
+  .team-card,
+  .price-card,
+  .rv-card,
+  .rv-form-wrap,
+  .faq-item,
+  .contact__detail,
+  .services__also,
+  .intro__pillar {
+    background: rgba(255, 255, 255, 0.55) !important;
+    backdrop-filter: blur(24px) saturate(190%) !important;
+    -webkit-backdrop-filter: blur(24px) saturate(190%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.7) !important;
+    box-shadow: 
+      0 8px 32px -4px rgba(0, 0, 0, 0.04),
+      0 2px 8px -2px rgba(0, 0, 0, 0.02),
+      inset 0 1px 1px rgba(255, 255, 255, 0.9) !important;
+    border-radius: 20px !important;
+    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
+                box-shadow 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
+                background 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
+                border-color 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+  }
+
+  /* ─── LAYER 4 & 5: FLOATING GLASS & TOUCH INTERACTION ────── */
+  .glass-pill {
+    background: rgba(255, 255, 255, 0.75) !important;
+    backdrop-filter: blur(16px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.85) !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06), inset 0 1px 1px #ffffff !important;
+    border-radius: 9999px !important;
+    color: var(--navy) !important;
+  }
+
+  /* Interactive expansion & touch elevation */
+  .glass-card:active,
+  .proj-card:active,
+  .svc-row:active,
+  .process__step:active,
+  .team-card:active,
+  .price-card:active {
+    transform: scale(0.98) !important;
+    border-color: rgba(0, 0, 0, 0.08) !important;
+    background: rgba(255, 255, 255, 0.65) !important;
+    box-shadow: 
+      0 2px 8px -4px rgba(0, 0, 0, 0.05),
+      inset 0 1px 1px #ffffff !important;
+  }
+
+  .btn:active {
+    transform: scale(0.975) !important;
+  }
+
+  /* ─── 3. HERO (MOBILE) ──────────────────────────────────── */
+  .hero {
+    padding-top: calc(var(--navbar-h) + 2rem) !important;
+    padding-bottom: 2rem !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04) !important;
     min-height: auto !important;
-    padding-top: calc(var(--navbar-h) + var(--s6)) !important;
   }
   .hero__inner {
-    padding-top: var(--s4) !important;
-    padding-bottom: var(--s8) !important;
-    gap: var(--s6) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1.5rem !important;
   }
   .hero__eyebrow {
-    display: inline-block !important;
-    background: rgba(37,99,235,0.15) !important;
-    border: 1px solid rgba(147,197,253,0.3) !important;
-    padding: 4px 14px !important;
-    border-radius: 9999px !important;
-    color: #93c5fd !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    background: rgba(255, 255, 255, 0.85) !important;
+    backdrop-filter: blur(12px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.95) !important;
+    color: #2563eb !important;
+    font-weight: 700 !important;
+    font-size: 0.75rem !important;
     letter-spacing: 0.1em !important;
+    padding: 6px 16px !important;
+    border-radius: 9999px !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04), inset 0 1px 1px #ffffff !important;
   }
   .hero__heading {
-    font-size: clamp(2rem, 7.5vw, 2.75rem) !important;
-    color: #f8fafc !important;
-    margin-bottom: var(--s3) !important;
+    font-size: clamp(2.1rem, 8.5vw, 2.75rem) !important;
+    font-weight: 800 !important;
+    color: #0c1120 !important;
+    line-height: 1.14 !important;
+    letter-spacing: -0.03em !important;
+    margin-bottom: 0.75rem !important;
   }
   .hero__body {
-    font-size: var(--base) !important;
-    color: #94a3b8 !important;
-    margin-bottom: var(--s5) !important;
+    font-size: 0.95rem !important;
+    color: #475569 !important;
+    line-height: 1.65 !important;
+    margin-bottom: 1.25rem !important;
   }
-  .hero__actions { flex-direction: column !important; width: 100% !important; }
-  .hero__actions .btn { width: 100% !important; justify-content: center !important; }
+  .hero__actions {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.75rem !important;
+    width: 100% !important;
+  }
+  .hero__actions .btn {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 0.85rem 1.25rem !important;
+    font-size: 0.95rem !important;
+    border-radius: 12px !important;
+  }
+  .hero__actions .btn--primary {
+    background: #2563eb !important;
+    color: #ffffff !important;
+    border: 1.5px solid #2563eb !important;
+    box-shadow: 0 8px 22px rgba(37, 99, 235, 0.25) !important;
+  }
   .hero__actions .btn--outline {
-    color: #f1f5f9 !important;
-    border-color: rgba(255,255,255,0.2) !important;
-    background: rgba(255,255,255,0.05) !important;
+    background: rgba(255, 255, 255, 0.75) !important;
+    backdrop-filter: blur(12px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.9) !important;
+    color: #0c1120 !important;
+    box-shadow: 0 4px 12px rgba(12, 17, 32, 0.04), inset 0 1px 1px #ffffff !important;
   }
   .hero__preview {
-    min-height: 260px !important;
-    border-radius: 14px !important;
-    border: 1px solid rgba(255,255,255,0.1) !important;
-    box-shadow: 0 12px 40px rgba(0,0,0,0.5) !important;
-    overflow: hidden !important;
+    min-height: 250px !important;
   }
   .hero__trust {
-    border-top: 1px solid rgba(255,255,255,0.07) !important;
+    border-top: 1px solid rgba(0, 0, 0, 0.06) !important;
+    padding-top: 1.25rem !important;
   }
-  .hero__trust span { color: rgba(255,255,255,0.3) !important; }
-}
+  .hero__trust span {
+    color: #64748b !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.08em !important;
+  }
 
-/* ─── 3. INTRODUCTION ─────────────────────────────────────── */
-@media (max-width: 768px) {
-  .intro {
-    background: #0d1120 !important;
-    border-bottom: 1px solid rgba(255,255,255,0.07) !important;
-  }
-  .intro__head { color: rgba(255,255,255,0.25) !important; }
-  .intro-head--lit { color: #f8fafc !important; }
-  .intro__body { color: #94a3b8 !important; }
+  /* ─── 4. INTRODUCTION ──────────────────────────────────── */
+  .intro__head { color: #64748b !important; }
+  .intro-head--lit { color: #0c1120 !important; font-weight: 800 !important; }
+  .intro__body { color: #475569 !important; }
   .intro__pillars {
-    border-top: 1px solid rgba(255,255,255,0.08) !important;
-    border-left: 1px solid rgba(255,255,255,0.08) !important;
-  }
-  .intro__pillar {
-    border-right: 1px solid rgba(255,255,255,0.08) !important;
-    border-bottom: 1px solid rgba(255,255,255,0.08) !important;
-    background: transparent !important;
-  }
-  .intro__pillar:hover { background: rgba(255,255,255,0.04) !important; }
-  .intro__pillar-n { color: rgba(255,255,255,0.25) !important; }
-  .intro__pillar-title { color: #f1f5f9 !important; }
-  .intro__pillar-desc { color: #94a3b8 !important; }
-}
-
-/* ─── 4. DEMO WEBSITES ────────────────────────────────────── */
-@media (max-width: 768px) {
-  .demos {
-    background: #0b0f1a !important;
-    border-bottom: 1px solid rgba(255,255,255,0.07) !important;
-  }
-  .demos__heading { color: #f1f5f9 !important; }
-  .demos__sub { color: #94a3b8 !important; }
-  .demos__filter {
-    background: rgba(255,255,255,0.06) !important;
-    border: 1px solid rgba(255,255,255,0.1) !important;
-    color: #cbd5e1 !important;
-    border-radius: 9999px !important;
-  }
-  .demos__filter--active {
-    background: rgba(37,99,235,0.3) !important;
-    border-color: rgba(147,197,253,0.4) !important;
-    color: #ffffff !important;
-  }
-  .demo-card {
-    background: rgba(255,255,255,0.04) !important;
-    border: 1px solid rgba(255,255,255,0.09) !important;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.4) !important;
-  }
-  .demo-card__title { color: #f1f5f9 !important; }
-  .demo-card__sub   { color: #94a3b8 !important; }
-}
-
-/* ─── 5. PROJECTS ─────────────────────────────────────────── */
-@media (max-width: 768px) {
-  .projects {
-    background: #0d1120 !important;
-    border-bottom: 1px solid rgba(255,255,255,0.07) !important;
-  }
-  .projects__heading { color: #f1f5f9 !important; }
-  .projects__sub     { color: #94a3b8 !important; }
-  .proj-featured {
-    background: rgba(255,255,255,0.04) !important;
-    border: 1px solid rgba(255,255,255,0.09) !important;
-    border-radius: 16px !important;
-    overflow: hidden !important;
-  }
-  .proj-featured__title { color: #f1f5f9 !important; }
-  .proj-featured__desc  { color: #94a3b8 !important; }
-  .proj-card {
-    background: rgba(255,255,255,0.04) !important;
-    border: 1px solid rgba(255,255,255,0.09) !important;
-    border-radius: 14px !important;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.4) !important;
-  }
-  .proj-card__title { color: #f1f5f9 !important; }
-  .proj-card__desc  { color: #94a3b8 !important; }
-  .proj-card__tag   {
-    background: rgba(37,99,235,0.2) !important;
-    border-color: rgba(147,197,253,0.3) !important;
-    color: #93c5fd !important;
-  }
-}
-
-/* ─── 6. WHY CHOOSE US ────────────────────────────────────── */
-@media (max-width: 768px) {
-  .why {
-    background: #0b0f1a !important;
-    border-bottom: 1px solid rgba(255,255,255,0.07) !important;
-  }
-  .why__heading { color: #f1f5f9 !important; }
-  .why__sub     { color: #94a3b8 !important; }
-  .why-item     { border-color: rgba(255,255,255,0.08) !important; }
-  .why-item__title { color: #f1f5f9 !important; }
-  .why-item__desc  { color: #94a3b8 !important; }
-  .why-item__num   { color: rgba(255,255,255,0.12) !important; }
-}
-
-/* ─── 7. PROCESS ──────────────────────────────────────────── */
-@media (max-width: 768px) {
-  .process { background: #0d1120 !important; }
-  .process__heading { color: #f8fafc !important; }
-  .process__sub     { color: #94a3b8 !important; }
-  .process__step {
-    background: rgba(255,255,255,0.04) !important;
-    border: 1px solid rgba(255,255,255,0.08) !important;
-    border-radius: 12px !important;
-    padding: 16px 14px !important;
-    margin-bottom: 10px !important;
-  }
-  .process__step--active {
-    background: rgba(37,99,235,0.2) !important;
-    border-color: rgba(147,197,253,0.35) !important;
-  }
-  .process__step-num {
-    background: rgba(255,255,255,0.08) !important;
-    color: rgba(255,255,255,0.4) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
     border: none !important;
   }
+  .intro__pillar {
+    border-radius: 16px !important;
+    padding: 18px !important;
+  }
+  .intro__pillar-n { color: #2563eb !important; font-weight: 700 !important; }
+  .intro__pillar-title { color: #0c1120 !important; font-weight: 700 !important; }
+  .intro__pillar-desc { color: #475569 !important; }
+
+  /* ─── 5. DEMO WEBSITES ──────────────────────────────────── */
+  .demos__heading { color: #0c1120 !important; font-weight: 800 !important; }
+  .demos__sub { color: #475569 !important; }
+  .demos__filters { display: flex !important; gap: 8px !important; flex-wrap: wrap !important; }
+  .demos__filter {
+    background: rgba(255, 255, 255, 0.75) !important;
+    backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.9) !important;
+    color: #475569 !important;
+    border-radius: 9999px !important;
+    font-weight: 600 !important;
+    padding: 6px 16px !important;
+  }
+  .demos__filter--active {
+    background: #2563eb !important;
+    border-color: #2563eb !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25) !important;
+  }
+  .demo-card__title { color: #0c1120 !important; font-weight: 700 !important; }
+  .demo-card__sub { color: #475569 !important; }
+  .demo-card__cta {
+    background: #2563eb !important;
+    color: #ffffff !important;
+    font-weight: 600 !important;
+    border-radius: 10px !important;
+  }
+
+  /* ─── 6. SERVICES (TOUCH EXPANSION ACCORDION) ───────────── */
+  .services__heading { color: #0c1120 !important; font-weight: 800 !important; }
+  .services__list { border-top: none !important; margin-bottom: 1.5rem !important; }
+  .svc-row {
+    display: grid !important;
+    grid-template-columns: 32px 1fr !important;
+    gap: 0.75rem !important;
+    padding: 1rem 1.1rem !important;
+    margin: 0 0 10px 0 !important;
+    border-radius: 16px !important;
+  }
+  .svc-row::before { display: none !important; }
+  .svc-row--active {
+    background: rgba(255, 255, 255, 0.75) !important;
+    border-color: rgba(255, 255, 255, 0.9) !important;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.06), inset 0 1px 1px #ffffff !important;
+  }
+  .svc-num { color: var(--blue) !important; font-weight: 700 !important; }
+  .svc-title { font-size: 1.15rem !important; color: var(--navy) !important; font-weight: 700 !important; }
+  .svc-row--active .svc-title { color: var(--blue) !important; }
+  .svc-desc { color: var(--g500) !important; font-size: 0.9rem !important; }
+  .svc-tag {
+    background: rgba(37, 99, 235, 0.08) !important;
+    border: 1px solid rgba(37, 99, 235, 0.2) !important;
+    color: #2563eb !important;
+    font-weight: 600 !important;
+    border-radius: 6px !important;
+  }
+  .svc-cta {
+    display: inline-flex !important;
+    opacity: 1 !important;
+    transform: none !important;
+    color: #2563eb !important;
+    font-weight: 700 !important;
+    margin-top: 0.5rem !important;
+  }
+
+  /* ─── 7. PROJECTS (HORIZONTAL SWIPE SHOWCASE) ───────────── */
+  .projects__heading { color: #0c1120 !important; font-weight: 800 !important; }
+  .projects__sub { color: #475569 !important; }
+  .proj-featured {
+    grid-template-columns: 1fr !important;
+    border-radius: 18px !important;
+  }
+  .proj-featured__info { background: transparent !important; padding: 1.25rem !important; }
+  .proj-featured__title { color: #0c1120 !important; font-size: 1.5rem !important; font-weight: 800 !important; }
+  .proj-cat { color: #2563eb !important; font-weight: 700 !important; }
+  .proj-desc { color: #475569 !important; }
+  .proj-tech-item {
+    background: rgba(255, 255, 255, 0.8) !important;
+    border: 1px solid rgba(0, 0, 0, 0.06) !important;
+    color: #475569 !important;
+  }
+  
+  .proj-grid {
+    display: flex !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    -webkit-overflow-scrolling: touch !important;
+    gap: 14px !important;
+    padding: 8px 4px 16px 4px !important;
+    margin-left: -1rem !important;
+    margin-right: -1rem !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    scrollbar-width: none !important;
+  }
+  .proj-grid::-webkit-scrollbar { display: none !important; }
+  .proj-card {
+    flex: 0 0 85vw !important;
+    max-width: 310px !important;
+    scroll-snap-align: start !important;
+    border-radius: 18px !important;
+  }
+  .proj-card__info { background: transparent !important; padding: 1.1rem !important; }
+  .proj-card__title { color: #0c1120 !important; font-weight: 700 !important; }
+  .proj-link { color: #2563eb !important; font-weight: 700 !important; }
+
+  /* ─── 8. PROCESS (VERTICAL LIQUID GLASS TIMELINE) ───────── */
+  .process__heading { color: #0c1120 !important; font-weight: 800 !important; }
+  .process__sub { color: #475569 !important; }
+  .process__step {
+    padding: 1.1rem !important;
+    margin-bottom: 10px !important;
+    border-radius: 16px !important;
+  }
+  .process__step--active {
+    background: rgba(255, 255, 255, 0.75) !important;
+    border-color: rgba(255, 255, 255, 0.9) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05), inset 0 1px 1px #ffffff !important;
+  }
+  .process__step-num {
+    background: rgba(37, 99, 235, 0.05) !important;
+    color: var(--blue) !important;
+    font-weight: 700 !important;
+  }
   .process__step--active .process__step-num {
-    background: rgba(37,99,235,0.5) !important;
+    background: #2563eb !important;
     color: #ffffff !important;
   }
-  .process__step-title { color: rgba(255,255,255,0.5) !important; }
-  .process__step--active .process__step-title { color: #ffffff !important; }
-  .process__step-desc  { color: rgba(255,255,255,0.35) !important; }
-  .process__step--active .process__step-desc  { color: rgba(255,255,255,0.65) !important; }
-}
+  .process__step-title { color: #0c1120 !important; font-weight: 700 !important; }
+  .process__step-desc { color: #475569 !important; }
 
-/* ─── 8. TEAM / ABOUT ─────────────────────────────────────── */
-@media (max-width: 768px) {
-  .about {
-    background: #0b0f1a !important;
-    border-bottom: 1px solid rgba(255,255,255,0.07) !important;
-  }
-  .about__heading { color: #f1f5f9 !important; }
-  .about__sub     { color: #94a3b8 !important; }
-  .team-card {
-    background: rgba(255,255,255,0.04) !important;
-    border: 1px solid rgba(255,255,255,0.09) !important;
-    border-radius: 16px !important;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.4) !important;
-  }
-  .team-card__name  { color: #f1f5f9 !important; }
-  .team-card__role  { color: #93c5fd !important; }
-  .team-card__bio   { color: #94a3b8 !important; }
+  /* ─── 9. WHY CHOOSE US ──────────────────────────────────── */
+  .why__heading { color: #0c1120 !important; font-weight: 800 !important; }
+  .why__sub { color: #475569 !important; }
+  .why-item { border-radius: 16px !important; padding: 1.25rem !important; }
+  .why-item__title { color: #0c1120 !important; font-weight: 700 !important; }
+  .why-item__desc { color: #475569 !important; }
+  .why-item__num { color: #2563eb !important; font-weight: 700 !important; opacity: 0.3 !important; }
+
+  /* ─── 10. ABOUT / TEAM ──────────────────────────────────── */
+  .about__heading { color: #0c1120 !important; font-weight: 800 !important; }
+  .about__sub { color: #475569 !important; }
+  .team-card { border-radius: 18px !important; padding: 1.25rem !important; }
+  .team-card__name { color: #0c1120 !important; font-weight: 700 !important; }
+  .team-card__role { color: #2563eb !important; font-weight: 600 !important; }
+  .team-card__bio { color: #475569 !important; }
   .team-card__skill {
-    background: rgba(255,255,255,0.06) !important;
-    border-color: rgba(255,255,255,0.1) !important;
-    color: #cbd5e1 !important;
+    background: rgba(255, 255, 255, 0.8) !important;
+    border: 1px solid rgba(0, 0, 0, 0.06) !important;
+    color: #475569 !important;
   }
-}
 
-/* ─── 9. TECHNOLOGIES ─────────────────────────────────────── */
-@media (max-width: 768px) {
-  .technologies {
-    background: #0d1120 !important;
-    border-bottom: 1px solid rgba(255,255,255,0.07) !important;
+  /* ─── 11. TECHNOLOGIES ──────────────────────────────────── */
+  .tech__heading { color: #0c1120 !important; font-weight: 800 !important; }
+  .tech-item {
+    background: rgba(255, 255, 255, 0.75) !important;
+    backdrop-filter: blur(12px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.9) !important;
+    color: #0c1120 !important;
+    font-weight: 600 !important;
+    border-radius: 12px !important;
+    box-shadow: 0 2px 8px rgba(12, 17, 32, 0.03), inset 0 1px 1px #ffffff !important;
   }
-  .tech__heading { color: #f1f5f9 !important; }
-  .tech-item     { color: #94a3b8 !important; border-color: rgba(255,255,255,0.08) !important; }
-}
 
-/* ─── 10. PRICING ─────────────────────────────────────────── */
-@media (max-width: 768px) {
-  .pricing {
-    background: #0b0f1a !important;
-    border-bottom: 1px solid rgba(255,255,255,0.07) !important;
-  }
-  .pricing__heading { color: #f1f5f9 !important; }
-  .pricing__sub     { color: #94a3b8 !important; }
-  .price-card {
-    background: rgba(255,255,255,0.04) !important;
-    border: 1px solid rgba(255,255,255,0.09) !important;
-    border-radius: 16px !important;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.4) !important;
-  }
+  /* ─── 12. PRICING ───────────────────────────────────────── */
+  .pricing__heading { color: #0c1120 !important; font-weight: 800 !important; }
+  .pricing__sub { color: #475569 !important; }
+  .price-card { border-radius: 20px !important; padding: 1.5rem !important; }
   .price-card--featured {
-    background: rgba(37,99,235,0.2) !important;
-    border-color: rgba(147,197,253,0.4) !important;
-    box-shadow: 0 12px 32px rgba(37,99,235,0.25) !important;
+    background: rgba(255, 255, 255, 0.85) !important;
+    border: 1.5px solid rgba(37, 99, 235, 0.5) !important;
+    box-shadow: 0 14px 38px rgba(37, 99, 235, 0.12), inset 0 1px 1px #ffffff !important;
   }
-  .price-card__name  { color: #f1f5f9 !important; }
-  .price-card__price { color: #ffffff !important; }
-  .price-card__period, .price-card__desc { color: #94a3b8 !important; }
-  .price-card__feature { color: #cbd5e1 !important; }
-  .price-card__feature-icon { color: #4ade80 !important; }
-  .pricing__note { color: rgba(255,255,255,0.4) !important; }
-}
+  .price-card__name { color: #0c1120 !important; font-weight: 700 !important; }
+  .price-card__price { color: #0c1120 !important; font-weight: 800 !important; }
+  .price-card__period, .price-card__desc { color: #475569 !important; }
+  .price-card__feature { color: #334155 !important; font-weight: 500 !important; }
+  .price-card__feature-icon { color: #16a34a !important; }
+  .price-card__cta {
+    background: #2563eb !important;
+    color: #ffffff !important;
+    font-weight: 600 !important;
+    border-radius: 10px !important;
+  }
 
-/* ─── 11. REVIEWS ─────────────────────────────────────────── */
-@media (max-width: 768px) {
-  .reviews {
-    background: #0d1120 !important;
-    border-bottom: 1px solid rgba(255,255,255,0.07) !important;
-  }
-  .reviews__heading { color: #f1f5f9 !important; }
-  .reviews__sub     { color: #94a3b8 !important; }
-  .rv-card {
-    background: rgba(255,255,255,0.04) !important;
-    border: 1px solid rgba(255,255,255,0.09) !important;
-    border-radius: 14px !important;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.4) !important;
-  }
-  .rv-card__quote { color: #e2e8f0 !important; }
-  .rv-card__name  { color: #f1f5f9 !important; }
-  .rv-card__role  { color: #94a3b8 !important; }
-  .rv-stars svg   { color: #fbbf24 !important; }
+  /* ─── 13. REVIEWS ───────────────────────────────────────── */
+  .reviews__heading { color: #0c1120 !important; font-weight: 800 !important; }
+  .reviews__sub { color: #475569 !important; }
+  .rv-card { border-radius: 16px !important; padding: 1.25rem !important; }
+  .rv-card__quote { color: #1e293b !important; }
+  .rv-card__name { color: #0c1120 !important; font-weight: 700 !important; }
+  .rv-card__role { color: #64748b !important; }
+  .rv-stars svg { color: #eab308 !important; }
 
-  /* Review form */
-  .rv-form-wrap {
-    background: rgba(255,255,255,0.04) !important;
-    border: 1px solid rgba(255,255,255,0.09) !important;
-    border-radius: 14px !important;
-  }
-  .rv-form__heading { color: #f1f5f9 !important; }
-  .rv-field label   { color: rgba(255,255,255,0.5) !important; }
+  .rv-form-wrap { border-radius: 18px !important; padding: 1.25rem !important; }
+  .rv-form__heading { color: #0c1120 !important; font-weight: 700 !important; }
+  .rv-field label { color: #475569 !important; font-weight: 600 !important; }
   .rv-field input, .rv-field textarea {
-    background: rgba(255,255,255,0.06) !important;
-    border-color: rgba(255,255,255,0.1) !important;
-    color: #f1f5f9 !important;
+    background: rgba(255, 255, 255, 0.8) !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    color: #0c1120 !important;
+    border-radius: 10px !important;
   }
-}
-
-/* ─── 12. FAQ ─────────────────────────────────────────────── */
-@media (max-width: 768px) {
-  .faq {
-    background: #0b0f1a !important;
-    border-bottom: 1px solid rgba(255,255,255,0.07) !important;
+  .rv-form__submit {
+    background: #2563eb !important;
+    color: #ffffff !important;
+    font-weight: 600 !important;
+    border-radius: 10px !important;
+    padding: 0.75rem 1.25rem !important;
   }
-  .faq__heading  { color: #f1f5f9 !important; }
-  .faq__sub      { color: #94a3b8 !important; }
-  .faq__list     { border-top-color: rgba(255,255,255,0.08) !important; }
-  .faq-item      { border-bottom-color: rgba(255,255,255,0.08) !important; }
-  .faq-item__q   { color: #e2e8f0 !important; }
-  .faq-item__q:hover, .faq-item--open .faq-item__q { color: #93c5fd !important; }
-  .faq-item__icon { color: rgba(255,255,255,0.3) !important; }
-  .faq-item--open .faq-item__icon { color: #93c5fd !important; }
-  .faq-item__a   { color: #94a3b8 !important; }
-}
 
-/* ─── 13. CONTACT ─────────────────────────────────────────── */
-@media (max-width: 768px) {
-  /* Contact is section--dark so already has dark bg; ensure text shows */
-  .contact__heading { color: #f8fafc !important; }
-  .contact__sub     { color: rgba(255,255,255,0.6) !important; }
-  .contact__detail  {
-    background: rgba(255,255,255,0.05) !important;
-    border-color: rgba(255,255,255,0.1) !important;
+  /* ─── 14. FAQ ───────────────────────────────────────────── */
+  .faq__heading { color: #0c1120 !important; font-weight: 800 !important; }
+  .faq__sub { color: #475569 !important; }
+  .faq__list { border-top: none !important; }
+  .faq-item {
+    border-radius: 14px !important;
+    margin-bottom: 10px !important;
+    border-bottom: none !important;
+    padding: 1rem 1.1rem !important;
   }
-  .contact__detail-label { color: rgba(255,255,255,0.4) !important; }
-  .contact__detail-val   { color: rgba(255,255,255,0.85) !important; }
-}
+  .faq-item__q { color: #0c1120 !important; font-weight: 700 !important; }
+  .faq-item--open .faq-item__q { color: #2563eb !important; }
+  .faq-item__a { color: #475569 !important; }
 
-/* ─── 14. WHATSAPP CTA ────────────────────────────────────── */
-@media (max-width: 768px) {
-  .wa-cta-section { background: #0d1120 !important; border-bottom: 1px solid rgba(255,255,255,0.07) !important; }
-  .wa-cta__heading { color: #f1f5f9 !important; }
-  .wa-cta__sub     { color: #94a3b8 !important; }
-}
+  /* ─── 15. CONTACT (ELEVATED GLASS CONTROL CTA) ─────────── */
+  .contact { padding-bottom: 4rem !important; }
+  .contact__inner {
+    background: rgba(255, 255, 255, 0.6) !important;
+    backdrop-filter: blur(24px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.8) !important;
+    border-radius: 24px !important;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.06), inset 0 1px 1px #ffffff !important;
+    padding: 2rem 1.25rem !important;
+  }
+  .contact__heading { color: var(--navy) !important; font-weight: 800 !important; font-size: 2rem !important; }
+  .contact__sub { color: #475569 !important; }
+  .contact__detail {
+    border-radius: 14px !important;
+    padding: 1rem !important;
+  }
+  .contact__detail-label { color: #64748b !important; }
+  .contact__detail-val { color: #0c1120 !important; font-weight: 600 !important; }
 
-/* ─── 15. FOOTER ──────────────────────────────────────────── */
-@media (max-width: 768px) {
-  .footer { color: rgba(255,255,255,0.7) !important; }
-  .footer__wordmark { color: #f1f5f9 !important; }
-  .footer__desc { color: rgba(255,255,255,0.4) !important; }
-  .footer__col-title { color: rgba(255,255,255,0.5) !important; }
-  .footer__link { color: rgba(255,255,255,0.55) !important; }
-  .footer__link:hover { color: #ffffff !important; }
-  .footer__bottom { border-top-color: rgba(255,255,255,0.08) !important; }
-  .footer__copy { color: rgba(255,255,255,0.3) !important; }
-}
+  /* ─── 16. FOOTER ────────────────────────────────────────── */
+  .footer {
+    background: transparent !important;
+    border-top: 1px solid rgba(0, 0, 0, 0.04) !important;
+    color: #475569 !important;
+    padding-top: 3rem !important;
+    padding-bottom: 2rem !important;
+  }
+  .footer__logo-img { height: 38px !important; mix-blend-mode: multiply !important; filter: none !important; }
+  .footer__desc { color: #64748b !important; }
+  .footer__col-heading { color: #0c1120 !important; font-weight: 700 !important; }
+  .footer__link { color: #475569 !important; }
+  .footer__link:hover { color: #2563eb !important; }
+  .footer__bottom { border-top-color: rgba(0, 0, 0, 0.06) !important; }
+  .footer__copy { color: #64748b !important; }
 
-/* ─── 16. SCROLL PROGRESS ─────────────────────────────────── */
-@media (max-width: 768px) {
-  .scroll-progress { background: rgba(37,99,235,0.8) !important; }
-}
+  /* ─── 17. WHATSAPP FLOAT FAB (PHYSICAL LIQUID GLASS) ───── */
+  .wa-fab {
+    display: none !important;
+  }
 
-/* ─── 17. WHATSAPP FLOAT ──────────────────────────────────── */
-@media (max-width: 768px) {
-  .wa-fab { bottom: 20px !important; right: 16px !important; }
-}
-
-/* ─── 18. SECTION-ALT BACKGROUND ─────────────────────────── */
-@media (max-width: 768px) {
-  .section--alt { background: #0d1120 !important; }
-  .section--dark { background: #0b0f1a !important; }
+  /* ─── 18. REMOVE UNWANTED BOTTOM BARS ───────────────────── */
+  .mobile-bottom-bar,
+  .mbb-item {
+    display: none !important;
+  }
 }

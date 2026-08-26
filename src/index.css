@@ -177,7 +177,7 @@ ul,ol { list-style: none; }
 @media (max-width: 768px)  {
   .section { padding: var(--s10) 0; }
   .container { padding: 0 var(--s4); }
-  body { padding-bottom: 90px; }
+  body { padding-bottom: 0; }
 }
 @media (max-width: 480px)  { .section { padding: var(--s8) 0; } }
 
