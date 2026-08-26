@@ -441,6 +441,44 @@
   }
   .contact__detail-label { color: #64748b !important; }
   .contact__detail-val { color: #0c1120 !important; font-weight: 600 !important; }
+  
+  /* Fix Contact Form on light glass */
+  .contact .cfield__label { color: var(--g500) !important; font-weight: 600 !important; }
+  .contact .cfield__input {
+    background: rgba(255, 255, 255, 0.8) !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    color: var(--navy) !important;
+  }
+  .contact .cfield__input::placeholder { color: var(--g400) !important; }
+  .contact .cfield__req { color: #ef4444 !important; }
+  
+  .contact .cs-wrap--dark .cs-trigger {
+    background: rgba(255, 255, 255, 0.8) !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    color: var(--g400) !important;
+  }
+  .contact .cs-wrap--dark .cs-trigger--filled {
+    color: var(--navy) !important;
+  }
+  .contact .cs-wrap--dark .cs-panel {
+    background: rgba(255, 255, 255, 0.95) !important;
+    border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  }
+  .contact .cs-wrap--dark .cs-option {
+    color: var(--g600) !important;
+  }
+  .contact .cs-wrap--dark .cs-option:hover {
+    background: var(--g50) !important;
+    color: var(--navy) !important;
+  }
+  .contact .cs-wrap--dark .cs-option--selected {
+    background: rgba(37,99,235,0.1) !important;
+    color: var(--blue) !important;
+  }
+  .contact__submit {
+    background: var(--blue) !important;
+    color: var(--white) !important;
+  }
 
   /* ─── 16. FOOTER ────────────────────────────────────────── */
   .footer {
