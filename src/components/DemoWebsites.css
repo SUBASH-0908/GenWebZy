@@ -182,6 +182,9 @@
 
 @media (max-width: 1024px) { .demos__grid { grid-template-columns: repeat(2,1fr); } }
 @media (max-width: 768px) {
+  .demos { border-bottom-color: rgba(255, 255, 255, 0.08); }
+  .demos__heading { color: #ffffff; }
+  .demos__sub { color: #94a3b8; }
   .demos__head { flex-direction: column; align-items: flex-start; gap: var(--s3); margin-bottom: var(--s6); }
   .demos__filters {
     display: flex;
@@ -201,6 +204,17 @@
     flex-shrink: 0;
     white-space: nowrap;
     padding: 6px 16px;
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #cbd5e1;
+    border-radius: 9999px;
+  }
+  .demos__filter--active {
+    background: rgba(37, 99, 235, 0.35);
+    border-color: rgba(147, 197, 253, 0.5);
+    color: #ffffff;
   }
   
   .demos__grid {
@@ -223,5 +237,13 @@
     max-width: 320px;
     scroll-snap-align: center;
     scroll-snap-stop: always;
+    background: rgba(15, 23, 42, 0.65);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+    border-radius: 16px;
   }
+  .demo-card__title { color: #ffffff; }
+  .demo-card__sub { color: #94a3b8; }
 }

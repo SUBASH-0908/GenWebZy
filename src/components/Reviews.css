@@ -281,6 +281,9 @@
   .reviews__grid { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 768px) {
+  .reviews { border-bottom-color: rgba(255, 255, 255, 0.08); }
+  .reviews__heading { color: #ffffff; }
+  .reviews__sub { color: #94a3b8; }
   .reviews__grid {
     display: flex;
     overflow-x: auto;
@@ -301,7 +304,17 @@
     max-width: 320px;
     scroll-snap-align: center;
     scroll-snap-stop: always;
+    background: rgba(15, 23, 42, 0.65);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+    border-radius: 16px;
   }
+  .rv-card__quote { color: #e2e8f0; }
+  .rv-card__name  { color: #ffffff; }
+  .rv-card__role  { color: #94a3b8; }
+
   .rv-form__row  { grid-template-columns: 1fr; }
   .rv-form-wrap  { padding: var(--s5); }
   .rv-form__actions { flex-direction: column; }

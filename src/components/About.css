@@ -63,6 +63,9 @@
 
 @media (max-width: 1100px) { .team__grid { grid-template-columns: repeat(3,1fr); } }
 @media (max-width: 768px) {
+  .about { border-bottom-color: rgba(255, 255, 255, 0.08); }
+  .about__heading { color: #ffffff; }
+  .about__sub { color: #94a3b8; }
   .team__grid {
     display: flex;
     overflow-x: auto;
@@ -83,5 +86,19 @@
     max-width: 270px;
     scroll-snap-align: center;
     scroll-snap-stop: always;
+    background: rgba(15, 23, 42, 0.65);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+    border-radius: 16px;
+  }
+  .team-card__name { color: #ffffff; }
+  .team-card__role { color: #93c5fd; }
+  .team-card__bio  { color: #94a3b8; }
+  .team-card__skill {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #cbd5e1;
   }
 }
