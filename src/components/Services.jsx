@@ -22,6 +22,7 @@ export default function Services() {
               className={`svc-row${active === i ? ' svc-row--active' : ''}`}
               onMouseEnter={() => setActive(i)}
               onMouseLeave={() => setActive(null)}
+              onClick={() => setActive(active === i ? null : i)}
             >
               <span className="svc-num">{s.id}</span>
               <div className="svc-body">

@@ -28,6 +28,6 @@
   box-shadow: 0 8px 24px rgba(37,211,102,0.4);
 }
 
-@media (max-width: 480px) {
-  .wa-fab { bottom: var(--s4); right: var(--s4); width: 46px; height: 46px; }
+@media (max-width: 768px) {
+  .wa-fab { bottom: 74px; right: var(--s4); width: 46px; height: 46px; }
 }

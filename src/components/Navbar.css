@@ -93,8 +93,10 @@
 .navbar__hamburger--open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
 .navbar__hamburger--open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 @media (max-width: 899px) {
+  .navbar__inner { justify-content: space-between; }
   .navbar__nav { display: none; }
   .navbar__hamburger { display: flex; }
+  .navbar__right { margin-left: auto; }
 }
 
 /* Mobile drawer */

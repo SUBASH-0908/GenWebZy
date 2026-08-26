@@ -37,73 +37,12 @@
   transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
   border-radius: 2px;
 }
-.svc-row:hover        { background: var(--surface); }
-.svc-row:hover::before{ transform: scaleY(1); }
-
-.svc-num {
-  font-size: var(--xs);
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  color: var(--g200);
-  padding-top: 4px;
-  transition: color var(--ease);
-  user-select: none;
-}
-.svc-row:hover .svc-num { color: var(--blue); }
-
-.svc-body { min-width: 0; }
-.svc-title {
-  font-size: var(--xl);
-  font-weight: 700;
-  letter-spacing: -0.015em;
-  color: var(--navy);
-  padding-top: 2px;
-  margin-bottom: var(--s2);
-  transition: color var(--ease);
-}
-.svc-row:hover .svc-title { color: var(--blue); }
-
-/* Smooth expand */
-.svc-expand {
-  display: grid;
-  grid-template-rows: 0fr;
-  transition: grid-template-rows 0.38s cubic-bezier(0.4,0,0.2,1);
-}
-.svc-row:hover .svc-expand { grid-template-rows: 1fr; }
-.svc-expand__inner { overflow: hidden; }
-
-.svc-desc {
-  font-size: var(--sm);
-  color: var(--g500);
-  line-height: 1.7;
-  padding: var(--s2) 0 var(--s3);
-  max-width: 500px;
-}
-.svc-tags { display: flex; flex-wrap: wrap; gap: var(--s2); padding-bottom: var(--s3); }
-.svc-tag {
-  font-size: var(--xs);
-  font-weight: 500;
-  color: var(--blue);
-  border: 1px solid var(--blue-mid);
-  background: var(--blue-sub);
-  padding: 2px 10px;
-  border-radius: 4px;
-}
-
-.svc-cta {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  font-size: var(--xs);
-  font-weight: 600;
-  color: var(--g200);
-  white-space: nowrap;
-  align-self: center;
-  opacity: 0;
-  transform: translateX(4px);
-  transition: opacity var(--ease), transform var(--ease-md), color var(--ease);
-}
-.svc-row:hover .svc-cta { opacity: 1; transform: none; color: var(--blue); }
+.svc-row:hover, .svc-row--active { background: var(--surface); }
+.svc-row:hover::before, .svc-row--active::before { transform: scaleY(1); }
+.svc-row:hover .svc-num, .svc-row--active .svc-num { color: var(--blue); }
+.svc-row:hover .svc-title, .svc-row--active .svc-title { color: var(--blue); }
+.svc-row:hover .svc-expand, .svc-row--active .svc-expand { grid-template-rows: 1fr; }
+.svc-row:hover .svc-cta, .svc-row--active .svc-cta { opacity: 1; transform: none; color: var(--blue); }
 
 .services__also {
   font-size: var(--sm);

@@ -18,6 +18,7 @@ import WhatsAppCTA    from './components/WhatsAppCTA';
 import Footer         from './components/Footer';
 import ScrollProgress from './components/ScrollProgress';
 import WhatsAppFloat  from './components/WhatsAppFloat';
+import MobileBottomBar from './components/MobileBottomBar';
 
 export default function App() {
   useScrollReveal();
@@ -27,6 +28,7 @@ export default function App() {
       <ScrollProgress />
       <Navbar />
       <WhatsAppFloat />
+      <MobileBottomBar />
 
       <main id="main-content">
         <Hero />

@@ -45,6 +45,8 @@ export default function Process() {
                 className={`process__step${i <= active ? ' process__step--active' : ''}`}
                 data-idx={i}
                 ref={el => (refs.current[i] = el)}
+                onClick={() => setActive(i)}
+                style={{ cursor: 'pointer' }}
               >
                 <div className="process__step-num">{step.number}</div>
                 <div className="process__step-body">
