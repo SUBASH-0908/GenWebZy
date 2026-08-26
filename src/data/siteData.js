@@ -102,7 +102,7 @@ export const DEMOS = [
 export const TEAM = [
   {
     id: "TEAM_MEMBER_01",
-    name: "TEAM_MEMBER_01",       // Replace with actual name
+    name: "Subash",       // Replace with actual name
     role: "Founder / Project Lead",
     bio: "Leads the team and manages client relationships, project planning and overall delivery.",
     skills: ["Project Management", "Web Strategy", "Client Communication"],
@@ -112,7 +112,7 @@ export const TEAM = [
   },
   {
     id: "TEAM_MEMBER_02",
-    name: "TEAM_MEMBER_02",
+    name: "Saran",
     role: "Frontend Developer",
     bio: "Responsible for building responsive, pixel-perfect interfaces that work across all devices.",
     skills: ["HTML", "CSS", "JavaScript", "React"],
@@ -122,7 +122,7 @@ export const TEAM = [
   },
   {
     id: "TEAM_MEMBER_03",
-    name: "TEAM_MEMBER_03",
+    name: "Thiru",
     role: "Backend Developer",
     bio: "Handles server-side logic, databases and API integrations to power the websites we build.",
     skills: ["Node.js", "Express", "MongoDB", "Python"],
@@ -132,7 +132,7 @@ export const TEAM = [
   },
   {
     id: "TEAM_MEMBER_04",
-    name: "TEAM_MEMBER_04",
+    name: "Sasi",
     role: "UI/UX Designer",
     bio: "Shapes the visual identity, layout and user experience of every project we take on.",
     skills: ["Figma", "UI Design", "UX Research", "Prototyping"],
@@ -142,7 +142,7 @@ export const TEAM = [
   },
   {
     id: "TEAM_MEMBER_05",
-    name: "TEAM_MEMBER_05",
+    name: "Udaya",
     role: "Marketing & Client Relations",
     bio: "Manages client onboarding, outreach and helps bridge communication between clients and the team.",
     skills: ["Client Relations", "Social Media", "Content Strategy", "SEO Basics"],
