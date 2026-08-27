@@ -227,21 +227,21 @@ function buildOwnerEmailHtml(data, waLink, replyLink, crmUrl) {
           <td style="padding-right:10px;">
             <a href="${replyLink}"
                style="display:inline-block;background:#6c63ff;color:#ffffff;font-size:12px;font-weight:700;text-decoration:none;padding:12px 22px;border-radius:8px;letter-spacing:0.05em;">
-              ✉️ Reply to Client
+              &#x2709;&#xFE0F; Reply to Client
             </a>
           </td>
           <!-- WhatsApp -->
           <td style="padding-right:10px;">
             <a href="${waLink}"
                style="display:inline-block;background:#128c7e;color:#ffffff;font-size:12px;font-weight:700;text-decoration:none;padding:12px 22px;border-radius:8px;letter-spacing:0.05em;">
-              💬 WhatsApp Client
+              &#x1F4AC; WhatsApp Client
             </a>
           </td>
           <!-- CRM -->
           <td>
             <a href="${crmUrl}"
                style="display:inline-block;background:#1e1e35;border:1px solid #2e2e4e;color:#a78bfa;font-size:12px;font-weight:700;text-decoration:none;padding:12px 22px;border-radius:8px;letter-spacing:0.05em;">
-              📊 Open CRM
+              &#x1F4CA; Open CRM
             </a>
           </td>
         </tr>
@@ -458,13 +458,13 @@ function buildClientEmailHtml(data, clientWaLink) {
           <td style="padding-right:12px;">
             <a href="${clientWaLink}"
                style="display:inline-block;background:#128c7e;color:#ffffff;font-size:13px;font-weight:700;text-decoration:none;padding:14px 24px;border-radius:8px;">
-              💬 Chat with Genwebzy on WhatsApp
+              &#x1F4AC; Chat with Genwebzy on WhatsApp
             </a>
           </td>
           <td>
             <a href="${CONFIG.WEBSITE}"
                style="display:inline-block;background:#f1f5f9;border:1px solid #e2e8f0;color:#374151;font-size:13px;font-weight:600;text-decoration:none;padding:14px 24px;border-radius:8px;">
-              🌐 Visit Genwebzy
+              &#x1F310; Visit Genwebzy
             </a>
           </td>
         </tr>
@@ -551,7 +551,7 @@ function buildReviewEmailHtml(data) {
   
   let stars = "";
   for (let i = 0; i < 5; i++) {
-    stars += i < rating ? "★ " : "☆ ";
+    stars += i < rating ? "&#x2605; " : "&#x2606; ";
   }
 
   return `<!DOCTYPE html>
@@ -587,7 +587,7 @@ function buildReviewEmailHtml(data) {
         Thank you for<br/>your review!
       </p>
       <p style="margin:0;font-size:15px;color:rgba(255,255,255,0.8);line-height:1.6;">
-        Hello \${firstName}, we truly appreciate you taking the time to share your experience with Genwebzy.
+        Hello ${firstName}, we truly appreciate you taking the time to share your experience with Genwebzy.
       </p>
     </td>
   </tr>
@@ -600,8 +600,8 @@ function buildReviewEmailHtml(data) {
       <table width="100%" cellpadding="0" cellspacing="0" style="background:#f8fafc;border-radius:10px;border:1px solid #e2e8f0;margin-bottom:28px;">
         <tr>
           <td style="padding:20px 24px;">
-            <p style="margin:0 0 10px;font-size:14px;font-weight:700;color:#0f172a;">Rating: <span style="color:#fbbf24;letter-spacing:2px;font-size:18px;">\${stars}</span></p>
-            <p style="margin:0;font-size:14px;color:#334155;line-height:1.6;font-style:italic;">"\${reviewMsg}"</p>
+            <p style="margin:0 0 10px;font-size:14px;font-weight:700;color:#0f172a;">Rating: <span style="color:#fbbf24;letter-spacing:2px;font-size:18px;">${stars}</span></p>
+            <p style="margin:0;font-size:14px;color:#334155;line-height:1.6;font-style:italic;">"${reviewMsg}"</p>
           </td>
         </tr>
       </table>
@@ -613,9 +613,9 @@ function buildReviewEmailHtml(data) {
       <table cellpadding="0" cellspacing="0" style="margin-bottom:24px;">
         <tr>
           <td>
-            <a href="\${CONFIG.WEBSITE}"
+            <a href="${CONFIG.WEBSITE}"
                style="display:inline-block;background:#6c63ff;color:#ffffff;font-size:13px;font-weight:700;text-decoration:none;padding:14px 24px;border-radius:8px;">
-              🌐 Visit Genwebzy
+              &#x1F310; Visit Genwebzy
             </a>
           </td>
         </tr>
@@ -639,8 +639,8 @@ function buildReviewEmailHtml(data) {
             <p style="margin:6px 0 0;font-size:9px;color:#1e293b;line-height:1.5;">Genwebzy, Tamil Nadu, India<br/>contact.genwebzy@gmail.com</p>
           </td>
           <td align="right">
-            <a href="\${CONFIG.WEBSITE}" style="font-size:10px;color:#475569;text-decoration:none;">\${CONFIG.WEBSITE}</a><br/>
-            <a href="mailto:\${CONFIG.OWNER_EMAIL}" style="font-size:10px;color:#475569;text-decoration:none;">\${CONFIG.OWNER_EMAIL}</a>
+            <a href="${CONFIG.WEBSITE}" style="font-size:10px;color:#475569;text-decoration:none;">${CONFIG.WEBSITE}</a><br/>
+            <a href="mailto:${CONFIG.OWNER_EMAIL}" style="font-size:10px;color:#475569;text-decoration:none;">${CONFIG.OWNER_EMAIL}</a>
           </td>
         </tr>
       </table>
