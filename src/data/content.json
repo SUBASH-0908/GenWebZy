@@ -178,7 +178,8 @@
         "Ongoing support available"
       ],
       "cta": "Start a Conversation",
-      "highlighted": false
+      "highlighted": false,
+      "visible": true
     }
   ],
   "faq": [
