@@ -4,8 +4,8 @@
     "whatsapp": "919751574014",
     "whatsappLink": "https://wa.me/919751574014",
     "whatsapp2": "+91 7904434191",
-    "instagram": "https://www.instagram.com/genwebzy?igsi=M3BncGRsZGlsZWFw",
-    "linkedin": "https://www.linkedin.com/in/genwebzy/",
+    "instagram": "INSTAGRAM_URL",
+    "linkedin": "LINKEDIN_URL",
     "github": "GITHUB_URL"
   },
   "services": [
@@ -133,7 +133,7 @@
       "id": 1,
       "name": "Starter Website",
       "audience": "For individuals and small businesses.",
-      "price": "₹3,499",
+      "price": "₹ 3,499",
       "priceNote": "Starting from",
       "features": [
         "Up to 5 pages",
@@ -150,7 +150,7 @@
       "id": 2,
       "name": "Business Website",
       "audience": "For businesses requiring a complete online presence.",
-      "price": "₹7,999",
+      "price": "₹X,XXX",
       "priceNote": "Starting from",
       "features": [
         "Up to 10 pages",
@@ -161,8 +161,7 @@
         "Basic SEO setup"
       ],
       "cta": "Get a Quote",
-      "highlighted": true,
-      "visible": true
+      "highlighted": true
     },
     {
       "id": 3,
@@ -178,8 +177,7 @@
         "Ongoing support available"
       ],
       "cta": "Start a Conversation",
-      "highlighted": false,
-      "visible": true
+      "highlighted": false
     }
   ],
   "faq": [
@@ -192,14 +190,12 @@
     {
       "id": 2,
       "question": "Do you provide domain and hosting?",
-      "answer": "Yes. If required, GenWebZy can help with domain and hosting setup as part of the project.",
-      "visible": true
+      "answer": "Yes. If required, GenWebZy can help with domain and hosting setup as part of the project."
     },
     {
       "id": 3,
       "question": "Can you redesign an existing website?",
-      "answer": "Yes. Existing websites can be redesigned and modernized based on the requirement.",
-      "visible": true
+      "answer": "Yes. Existing websites can be redesigned and modernized based on the requirement."
     },
     {
       "id": 4,
