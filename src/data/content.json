@@ -144,7 +144,7 @@
       ],
       "cta": "Get a Quote",
       "highlighted": false,
-      "visible": false
+      "visible": true
     },
     {
       "id": 2,
