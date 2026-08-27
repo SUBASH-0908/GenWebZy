@@ -133,7 +133,7 @@
       "id": 1,
       "name": "Starter Website",
       "audience": "For individuals and small businesses.",
-      "price": "₹X,XXX",
+      "price": "₹3,499",
       "priceNote": "Starting from",
       "features": [
         "Up to 5 pages",
@@ -150,7 +150,7 @@
       "id": 2,
       "name": "Business Website",
       "audience": "For businesses requiring a complete online presence.",
-      "price": "₹X,XXX",
+      "price": "₹7,999",
       "priceNote": "Starting from",
       "features": [
         "Up to 10 pages",
