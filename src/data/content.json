@@ -162,7 +162,7 @@
       ],
       "cta": "Get a Quote",
       "highlighted": true,
-      "visible": false
+      "visible": true
     },
     {
       "id": 3,
