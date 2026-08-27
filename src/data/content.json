@@ -161,7 +161,8 @@
         "Basic SEO setup"
       ],
       "cta": "Get a Quote",
-      "highlighted": true
+      "highlighted": true,
+      "visible": false
     },
     {
       "id": 3,
