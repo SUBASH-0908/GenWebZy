@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './Reviews.css';
 
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzwNDynzpPi4xU5K6XN9iyRs3NNPelSQfU1ztqA-Ipt4dBhXGIE-qB7wWMJr-zCYHs/exec';
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwwSz9hZ1G0EvLk1lmPIAw5s9s4WfoVN2ZU65JW1BLotGqK6XOtcH7sBKu6j0lQAPuCIA/exec';
 
 import { REVIEWS } from '../data/siteData';
 
