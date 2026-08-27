@@ -503,3 +503,153 @@ function buildClientEmailHtml(data, clientWaLink) {
 </body>
 </html>`;
 }
+
+// ── REVIEW THANK YOU EMAIL ───────────────────────────────────────
+
+/**
+ * Send a premium thank you email to the client for their review.
+ * @param {Object} data    — sanitized review data
+ */
+function sendReviewThankYouEmail(data) {
+  const subject      = "Thank you for your review! — " + CONFIG.COMPANY_NAME;
+  const htmlBody     = buildReviewEmailHtml(data);
+  const firstName    = data.name.split(" ")[0];
+
+  const plainBody = [
+    "Hello " + firstName + ",",
+    "",
+    "Thank you so much for taking the time to leave a review for Genwebzy! We truly appreciate your feedback.",
+    "",
+    "You rated us: " + data.rating + " / 5 stars",
+    "Your review: \"" + data.review + "\"",
+    "",
+    "Your support means the world to us and helps us continue to build better websites.",
+    "",
+    "Visit our website: " + CONFIG.WEBSITE,
+    "",
+    "Warm regards,",
+    "The Genwebzy Team",
+    CONFIG.OWNER_EMAIL,
+  ].join("\n");
+
+  GmailApp.sendEmail(data.email, subject, plainBody, {
+    htmlBody:  htmlBody,
+    replyTo:   CONFIG.OWNER_EMAIL,
+    name:      CONFIG.COMPANY_NAME,
+  });
+
+  Logger.log("Review thank you email sent to: " + data.email);
+}
+
+/**
+ * Build the HTML email for the review thank you.
+ */
+function buildReviewEmailHtml(data) {
+  const firstName = escapeHtml(data.name.split(" ")[0]);
+  const rating    = data.rating;
+  const reviewMsg = escapeHtml(data.review);
+  
+  let stars = "";
+  for (let i = 0; i < 5; i++) {
+    stars += i < rating ? "★ " : "☆ ";
+  }
+
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Thank You For Your Review!</title>
+</head>
+<body style="margin:0;padding:0;background:#f1f5f9;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;">
+
+<table width="100%" cellpadding="0" cellspacing="0" style="background:#f1f5f9;padding:32px 16px;">
+<tr><td align="center">
+<table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;">
+
+  <!-- ══ HEADER ════════════════════════════════════════════ -->
+  <tr>
+    <td style="background:#0f0f1a;border-radius:16px 16px 0 0;padding:36px 40px 32px;">
+      <p style="margin:0 0 6px;font-size:20px;font-weight:800;letter-spacing:0.12em;color:#ffffff;text-transform:uppercase;">
+        GENWEBZY
+      </p>
+      <p style="margin:0;font-size:10px;font-weight:600;letter-spacing:0.25em;color:rgba(255,255,255,0.35);text-transform:uppercase;">
+        Building Websites That Work
+      </p>
+    </td>
+  </tr>
+
+  <!-- ══ HERO ══════════════════════════════════════════════ -->
+  <tr>
+    <td style="background:linear-gradient(135deg,#6c63ff 0%,#8b5cf6 50%,#a78bfa 100%);padding:40px 40px 36px;">
+      <p style="margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:0.25em;color:rgba(255,255,255,0.65);text-transform:uppercase;">Feedback Received</p>
+      <p style="margin:0 0 16px;font-size:30px;font-weight:800;color:#ffffff;line-height:1.2;">
+        Thank you for<br/>your review!
+      </p>
+      <p style="margin:0;font-size:15px;color:rgba(255,255,255,0.8);line-height:1.6;">
+        Hello \${firstName}, we truly appreciate you taking the time to share your experience with Genwebzy.
+      </p>
+    </td>
+  </tr>
+
+  <!-- ══ BODY ══════════════════════════════════════════════ -->
+  <tr>
+    <td style="background:#ffffff;padding:36px 40px 24px;">
+
+      <p style="margin:0 0 14px;font-size:11px;font-weight:700;color:#374151;letter-spacing:0.15em;text-transform:uppercase;">Your Feedback</p>
+      <table width="100%" cellpadding="0" cellspacing="0" style="background:#f8fafc;border-radius:10px;border:1px solid #e2e8f0;margin-bottom:28px;">
+        <tr>
+          <td style="padding:20px 24px;">
+            <p style="margin:0 0 10px;font-size:14px;font-weight:700;color:#0f172a;">Rating: <span style="color:#fbbf24;letter-spacing:2px;font-size:18px;">\${stars}</span></p>
+            <p style="margin:0;font-size:14px;color:#334155;line-height:1.6;font-style:italic;">"\${reviewMsg}"</p>
+          </td>
+        </tr>
+      </table>
+
+      <p style="margin:0;font-size:14px;color:#374151;line-height:1.7;margin-bottom:24px;">
+        Your support means the world to us and helps us continue to build better websites. If you ever need anything else, we are always here to help.
+      </p>
+
+      <table cellpadding="0" cellspacing="0" style="margin-bottom:24px;">
+        <tr>
+          <td>
+            <a href="\${CONFIG.WEBSITE}"
+               style="display:inline-block;background:#6c63ff;color:#ffffff;font-size:13px;font-weight:700;text-decoration:none;padding:14px 24px;border-radius:8px;">
+              🌐 Visit Genwebzy
+            </a>
+          </td>
+        </tr>
+      </table>
+
+      <p style="margin:0;font-size:13px;color:#64748b;line-height:1.7;">
+        Warm regards,<br/>
+        <strong style="color:#0f172a;">The Genwebzy Team</strong>
+      </p>
+    </td>
+  </tr>
+
+  <!-- ══ FOOTER ═══════════════════════════════════════════ -->
+  <tr>
+    <td style="background:#0f0f1a;border-radius:0 0 16px 16px;padding:20px 40px;">
+      <table width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td>
+            <p style="margin:0;font-size:12px;font-weight:800;letter-spacing:0.15em;color:#6c63ff;text-transform:uppercase;">GENWEBZY</p>
+            <p style="margin:4px 0 0;font-size:10px;color:#334155;">Building Websites That Work</p>
+            <p style="margin:6px 0 0;font-size:9px;color:#1e293b;line-height:1.5;">Genwebzy, Tamil Nadu, India<br/>contact.genwebzy@gmail.com</p>
+          </td>
+          <td align="right">
+            <a href="\${CONFIG.WEBSITE}" style="font-size:10px;color:#475569;text-decoration:none;">\${CONFIG.WEBSITE}</a><br/>
+            <a href="mailto:\${CONFIG.OWNER_EMAIL}" style="font-size:10px;color:#475569;text-decoration:none;">\${CONFIG.OWNER_EMAIL}</a>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+</table>
+</td></tr>
+</table>
+</body>
+</html>`;
+}

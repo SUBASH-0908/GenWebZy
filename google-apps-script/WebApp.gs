@@ -30,6 +30,11 @@ function doPost(e) {
     // ── 1. PARSE ──────────────────────────────────────────
     const raw = parsePostData(e);
 
+    // ── 1.5 HANDLE REVIEWS ────────────────────────────────
+    if (raw.type === 'review') {
+      return handleReviewSubmission(raw, lock);
+    }
+
     // ── 2. SANITIZE ───────────────────────────────────────
     const data = {
       name:      sanitize(raw.name,      100),
@@ -93,6 +98,48 @@ function doPost(e) {
     return jsonResponse({
       success: false,
       message: "Unable to process enquiry at the moment. Please try again or contact us on WhatsApp.",
+    });
+  }
+}
+
+/**
+ * Handle a review submission.
+ */
+function handleReviewSubmission(raw, lock) {
+  try {
+    const data = {
+      name:    sanitize(raw.name, 100),
+      email:   sanitize(raw.email, 150),
+      company: sanitize(raw.company, 150),
+      service: sanitize(raw.service, 100),
+      rating:  parseInt(raw.rating, 10) || 5,
+      review:  sanitize(raw.review, 2000),
+    };
+
+    if (!data.name || !isValidEmail(data.email) || !data.review) {
+      releaseLock(lock);
+      return jsonResponse({ success: false, message: "Invalid review data." });
+    }
+
+    // Save to CRM Reviews sheet
+    const row = saveReview(data);
+    if (!row) throw new Error("Failed to save review to Sheets.");
+
+    // Send thank you email
+    sendReviewThankYouEmail(data);
+
+    releaseLock(lock);
+    return jsonResponse({
+      success: true,
+      message: "Review submitted successfully.",
+    });
+
+  } catch (err) {
+    Logger.log("handleReviewSubmission error: " + err.message);
+    releaseLock(lock);
+    return jsonResponse({
+      success: false,
+      message: "Unable to process review at the moment.",
     });
   }
 }

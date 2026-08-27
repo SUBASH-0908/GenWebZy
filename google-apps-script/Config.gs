@@ -24,6 +24,7 @@ const CONFIG = {
   SPREADSHEET_ID: "1fCDG3qobeM1K-ZQ6ppdg-T74ZoDSb10o5DsifEsVgWY",  // Genwebzy CRM Sheet
   SHEET_LEADS:    "Enquiries",
   SHEET_DASHBOARD:"Dashboard",
+  SHEET_REVIEWS:  "Reviews",
 
   // ── BRANDING COLOURS (used in HTML emails) ───────────────
   COLOR_BG:       "#0a0a0f",
@@ -54,6 +55,9 @@ const CONFIG = {
     "Timestamp","Name","Email","Phone","Company",
     "Service","Budget","Timeline","Start Date","Message",
     "Status","Source","WhatsApp Link","Notes"
+  ],
+  REVIEW_HEADERS: [
+    "Timestamp", "Name", "Email", "Company", "Service", "Rating", "Review", "Source"
   ],
 
   // ── DUPLICATE WINDOW (seconds) ───────────────────────────

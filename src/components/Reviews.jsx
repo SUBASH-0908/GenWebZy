@@ -50,20 +50,21 @@ function ReviewCard({ review }) {
 
 export default function Reviews() {
   const [showForm, setShowForm] = useState(false);
-  const [form, setForm]   = useState({ name: '', company: '', service: '', rating: 0, text: '' });
+  const [form, setForm]   = useState({ name: '', email: '', company: '', service: '', rating: 0, text: '' });
   const [status, setStatus] = useState('idle'); // idle | sending | done
 
   const set = (k, v) => setForm(f => ({ ...f, [k]: v }));
 
   const handleSubmit = async e => {
     e.preventDefault();
-    if (!form.name || !form.text || form.rating === 0) return;
+    if (!form.name || !form.email || !form.text || form.rating === 0) return;
 
     setStatus('sending');
 
     const payload = {
       type:    'review',
       name:    form.name.trim(),
+      email:   form.email.trim(),
       company: form.company.trim(),
       service: form.service,
       rating:  form.rating,
@@ -135,11 +136,18 @@ export default function Reviews() {
                         onChange={e => set('name', e.target.value)} required />
                     </div>
                     <div className="rv-form__field">
-                      <label className="rv-form__label" htmlFor="rv-company">Company / Business</label>
-                      <input id="rv-company" className="rv-form__input" type="text"
-                        placeholder="ABC Technologies" value={form.company}
-                        onChange={e => set('company', e.target.value)} />
+                      <label className="rv-form__label" htmlFor="rv-email">Email Address <span className="rv-req">*</span></label>
+                      <input id="rv-email" className="rv-form__input" type="email"
+                        placeholder="ravi@example.com" value={form.email}
+                        onChange={e => set('email', e.target.value)} required />
                     </div>
+                  </div>
+
+                  <div className="rv-form__field">
+                    <label className="rv-form__label" htmlFor="rv-company">Company / Business</label>
+                    <input id="rv-company" className="rv-form__input" type="text"
+                      placeholder="ABC Technologies" value={form.company}
+                      onChange={e => set('company', e.target.value)} />
                   </div>
 
                   <div className="rv-form__field">

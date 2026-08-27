@@ -115,6 +115,50 @@ function saveLead(data) {
 }
 
 /**
+ * Initialise the Reviews sheet with headers and formatting if fresh.
+ * @param {GoogleAppsScript.Spreadsheet.Sheet} sheet
+ */
+function initReviewsSheet(sheet) {
+  if (sheet.getLastRow() === 0) {
+    const headers = CONFIG.REVIEW_HEADERS;
+    sheet.appendRow(headers);
+    styleHeaderRow(sheet, headers.length);
+    setColumnWidths(sheet);
+    sheet.setFrozenRows(1);
+  }
+}
+
+/**
+ * Save a new review to the Reviews sheet.
+ * @param {Object} data  — sanitized form data
+ * @returns {number}     — row number inserted
+ */
+function saveReview(data) {
+  const ss    = getOrCreateSpreadsheet();
+  const sheet = findSheet(ss, CONFIG.SHEET_REVIEWS);
+  initReviewsSheet(sheet);
+
+  const timestamp = nowIST();
+
+  const row = [
+    timestamp,
+    data.name,
+    data.email,
+    data.company   || "—",
+    data.service   || "—",
+    data.rating,
+    data.review,
+    "Genwebzy Website"
+  ];
+
+  sheet.appendRow(row);
+  const newRow = sheet.getLastRow();
+  styleDataRow(sheet, newRow, data);
+
+  return newRow;
+}
+
+/**
  * Update the WhatsApp link cell after row has been created.
  * @param {number} rowNumber
  * @param {string} waLink
